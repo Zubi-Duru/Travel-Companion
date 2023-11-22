@@ -11,6 +11,9 @@ module.exports = {
         prim: "#37374E",
         sec: "#FA8443",
       },
+      backgroundImage: {
+        bgImg: "url('/assets/bg.png')",
+      },
     },
   },
   plugins: [],
