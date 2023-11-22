@@ -10,14 +10,14 @@ export default function NavMobile() {
     setDropdown((prevDropdown) => !prevDropdown);
   };
   return (
-    <nav>
-      <div className="flex justify-between items-center px-2 py-2">
+    <>
+      <div className="flex justify-between items-center px-4 py-2">
         <Logo />
         <div className="flex space-x-2 items-center">
           <div>
             <Link
               href={`/`}
-              className=" text-sec  font-semibold border-[1px] border-sec py-2 px-4 rounded-3xl"
+              className=" text-tert  font-semibold border-[1px] border-tert py-2 px-4 rounded-3xl"
             >
               Sign Up
             </Link>
@@ -56,9 +56,9 @@ export default function NavMobile() {
           </div>
         </div>
       </div>
-      <div className={`${dropdown ? "block" : "hidden"}`}>
+      <nav className={`${dropdown ? "block" : "hidden"}`}>
         <NavLinks />
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

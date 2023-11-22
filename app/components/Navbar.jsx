@@ -1,10 +1,14 @@
-import NavLinks from "./NavLinks";
-import Logo from "./Logo";
+import NavMobile from "./NavMobile";
+import NavbarLg from "./NavbarLg";
 export default function Navbar() {
   return (
-    <div className="hidden md:flex items-center justify-between md:px-5 lg:px-20 xl:px-28 py-3 bg-white h-16">
-      <Logo />
-      <NavLinks />
-    </div>
+    <>
+      <div className="hidden md:block">
+        <NavbarLg />
+      </div>
+      <div className="md:hidden">
+        <NavMobile />
+      </div>
+    </>
   );
 }

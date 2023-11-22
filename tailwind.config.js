@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         prim: "#37374E",
-        sec: "#FA8443",
+        sec: "#666666",
+        tert: "#FA8443"
       },
       backgroundImage: {
         bgImg: "url('/assets/bg.png')",
