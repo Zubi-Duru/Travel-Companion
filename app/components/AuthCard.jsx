@@ -38,7 +38,7 @@ export default function AuthCard() {
           Sign In
         </h1>
         <div className="flex flex-col gap-3 justify-center">
-          <button className="w-full py-3 border-[1px] rounded-3xl border-prim  flex items-center mx-auto justify-center gap-1">
+          <button className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim  flex items-center mx-auto justify-center gap-1">
             <svg
               width="28"
               height="28"
@@ -55,7 +55,7 @@ export default function AuthCard() {
             <p className={`${openTab == 1 ? "block" : "hidden"}`} > Sign up with facebook</p>
             <p className={`${openTab == 2 ? "block" : "hidden"}`}> Continue with facebook</p>
           </button>
-          <button className="w-full py-3 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1">
+          <button className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1">
             <svg
               width="28"
               height="28"

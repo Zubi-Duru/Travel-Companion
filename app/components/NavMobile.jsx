@@ -16,8 +16,8 @@ export default function NavMobile() {
         <div className="flex space-x-2 items-center">
           <div>
             <Link
-              href={`/`}
-              className=" text-tert  font-semibold border-[1px] border-tert py-2 px-4 rounded-3xl"
+              href={`/auth`}
+              className=" text-tert font-medium border-[1px] border-tert py-1.5 px-4 rounded-3xl"
             >
               Sign Up
             </Link>
@@ -56,7 +56,7 @@ export default function NavMobile() {
           </div>
         </div>
       </div>
-      <nav className={`${dropdown ? "block" : "hidden"}`}>
+      <nav className={`${dropdown ? "block absolute z-10 bg-white w-full p-4 drop-shadow-lg rounded-b-xl" : "hidden"}`}>
         <NavLinks />
       </nav>
     </>
