@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AuthCard() {
-  const router= useRouter()
+  const router = useRouter();
   const [openTab, setOpenTab] = useState(1);
   const [formFilled, setFormFilled] = useState(false);
   const [username, setUsername] = useState("");
@@ -41,7 +41,7 @@ export default function AuthCard() {
   };
 
   const handleAuth = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (openTab == 1) {
       console.log("signup");
       handleSignUp;
@@ -50,14 +50,16 @@ export default function AuthCard() {
       console.log("login");
       handleLogin;
     }
-    router.push("/profile-setup")
+    router.push("/profile-setup");
   };
 
   return (
     <div className="flex flex-col gap-6 w-full bg-white rounded-3xl p-5 text-sm">
       <div className="hidden md:block w-full rounded-xl overflow-clip">
         <button
-          className="bg-[#A95629] w-1/2 py-3 text-white font-semibold"
+          className={`${
+            openTab == 1 ? "bg-[#A95629]" : "bg-[#C3C3C3]"
+          } w-1/2 py-3 text-white font-semibold`}
           onClick={(e) => {
             setOpenTab(1);
           }}
@@ -65,7 +67,9 @@ export default function AuthCard() {
           Signup
         </button>
         <button
-          className="bg-[#C3C3C3] w-1/2 py-3 text-white font-semibold"
+          className={`${
+            openTab == 2 ? "bg-[#A95629]" : "bg-[#C3C3C3]"
+          } w-1/2 py-3 text-white font-semibold`}
           onClick={(e) => {
             setOpenTab(2);
           }}

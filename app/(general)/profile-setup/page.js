@@ -245,7 +245,7 @@ export default function ProfileSetup() {
       selectedRelationsOption &&
       selectedReligionOption &&
       selectedHomeCountryOption &&
-      selectedDestinationCountryOption
+      selectedDestinationCountryOption && selectedTags
     )
       setFormFilled(true);
   }, [
@@ -290,7 +290,7 @@ export default function ProfileSetup() {
           <h1 className="font-semibold text-lg md:text-2xl text-prim">
             Connect Better!
           </h1>
-          <p className="text-sm">
+          <p className="text-sm text-sec">
             Help us link your profile with other like-minded people
           </p>
         </div>
