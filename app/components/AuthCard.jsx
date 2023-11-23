@@ -1,7 +1,54 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 export default function AuthCard() {
   const [openTab, setOpenTab] = useState(1);
+  const [formFilled, setFormFilled] = useState(false);
+  const [username, setUsername] = useState("");
+  const [passwordNew, setPasswordNew] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (
+      (openTab == 1 && username && passwordNew && email) ||
+      (openTab == 2 && email && password)
+    ) {
+      setFormFilled(true);
+    } else {
+      setFormFilled(false);
+    }
+  }, [openTab, username, email, passwordNew, password]);
+  //control forms
+  //required state to enable button
+  const handleInputChange = (e, set) => {
+    set(e.target.value);
+  };
+
+  const handleSignUp = (e) => {
+    if (formFilled) {
+      e.preventDefaul();
+      console.log(username, passwordNew, email);
+    }
+  };
+  const handleLogin = (e) => {
+    e.preventDefaul();
+    if (formFilled) {
+      console.log(email, password);
+    }
+  };
+
+  const handleAuth = (e) => {
+    if (openTab == 1) {
+      console.log("signup");
+      handleSignUp;
+    }
+    if (openTab == 2) {
+      console.log("login");
+      handleLogin;
+    }
+  };
+
   return (
     <div className="flex flex-col gap-6 w-full bg-white rounded-3xl p-5 text-sm">
       <div className="hidden md:block w-full rounded-xl overflow-clip">
@@ -52,8 +99,14 @@ export default function AuthCard() {
                 fill="white"
               />
             </svg>
-            <p className={`${openTab == 1 ? "block" : "hidden"}`} > Sign up with facebook</p>
-            <p className={`${openTab == 2 ? "block" : "hidden"}`}> Continue with facebook</p>
+            <p className={`${openTab == 1 ? "block" : "hidden"}`}>
+              {" "}
+              Sign up with facebook
+            </p>
+            <p className={`${openTab == 2 ? "block" : "hidden"}`}>
+              {" "}
+              Continue with facebook
+            </p>
           </button>
           <button className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1">
             <svg
@@ -80,8 +133,14 @@ export default function AuthCard() {
                 fill="#EB4335"
               />
             </svg>
-            <p  className={`${openTab == 1 ? "block" : "hidden"}`}> Sign up with Google</p>
-            <p className={`${openTab == 2 ? "block" : "hidden"}`}> Continue with Google</p>
+            <p className={`${openTab == 1 ? "block" : "hidden"}`}>
+              {" "}
+              Sign up with Google
+            </p>
+            <p className={`${openTab == 2 ? "block" : "hidden"}`}>
+              {" "}
+              Continue with Google
+            </p>
           </button>
         </div>
         <div className="flex items-center justify-between">
@@ -89,7 +148,7 @@ export default function AuthCard() {
           <span>OR</span>
           <hr className="w-2/5 inline-block border-t-[1.5px]" />
         </div>
-        <form className="space-y-3">
+        <form className="space-y-3 text-black">
           <div>
             <div
               className={` ${
@@ -97,52 +156,114 @@ export default function AuthCard() {
               } flex gap-3 mb-3`}
             >
               <div className="w-1/2">
-                <label for="firstName" className="block text-sec mb-[0.8px]">
-                  First Name
+                <label htmlFor="username" className="block text-sec mb-[0.8px]">
+                  Username
                 </label>
                 <input
-                  id="firstName"
+                  required
+                  type="text"
+                  value={username}
+                  onInput={(e) => {
+                    handleInputChange(e, setUsername);
+                  }}
+                  onFocus={(e) => {
+                    handleInputChange(e, setUsername);
+                  }}
+                  onBlur={(e) => {
+                    handleInputChange(e, setUsername);
+                  }}
+                  id="username"
                   className=" inline-block border-[1px] w-full border-sec h-10 rounded-lg focus:outline-2 focus:outline-tert pl-2"
                 />
               </div>
               <div className="w-1/2">
-                <label for="lastName" className="block text-sec mb-[0.8px]">
-                  Last Name
+                <label
+                  htmlFor="passwordNew"
+                  className="block text-sec mb-[0.8px]"
+                >
+                  Password
                 </label>
                 <input
-                  id="lastName"
+                  required
+                  type="password"
+                  value={passwordNew}
+                  onInput={(e) => {
+                    handleInputChange(e, setPasswordNew);
+                  }}
+                  onFocus={(e) => {
+                    handleInputChange(e, setPasswordNew);
+                  }}
+                  onBlur={(e) => {
+                    handleInputChange(e, setPasswordNew);
+                  }}
+                  id="passwordNew"
                   className=" inline-block border-[1px] w-full border-sec h-10 rounded-lg focus:outline-2 focus:outline-tert pl-2"
                 />
               </div>
             </div>
             <div className="w-full">
               <div className="mb-3">
-                <label for="email" className="block text-sec mb-[0.8px]">
+                <label htmlFor="email" className="block text-sec mb-[0.8px]">
                   Email Address
                 </label>
                 <input
+                  required
+                  type="email"
+                  value={email}
+                  onInput={(e) => {
+                    handleInputChange(e, setEmail);
+                  }}
+                  onFocus={(e) => {
+                    handleInputChange(e, setEmail);
+                  }}
+                  onBlur={(e) => {
+                    handleInputChange(e, setEmail);
+                  }}
                   id="email"
                   className="w-full border-[1px] border-sec h-10 rounded-lg focus:outline-2 focus:outline-tert pl-2"
                 />
               </div>
               <div className={` ${openTab == 2 ? "block" : "hidden"} mb-3`}>
-                <label for="email" className="block text-sec mb-[0.8px]">
+                <label htmlFor="password" className="block text-sec mb-[0.8px]">
                   Password
                 </label>
                 <input
+                  required
+                  type="password"
+                  value={password}
+                  onInput={(e) => {
+                    handleInputChange(e, setPassword);
+                  }}
+                  onFocus={(e) => {
+                    handleInputChange(e, setPassword);
+                  }}
+                  onBlur={(e) => {
+                    handleInputChange(e, setPassword);
+                  }}
                   id="password"
                   className="w-full border-[1px] border-sec h-10 rounded-lg focus:outline-2 focus:outline-tert pl-2"
                 />
               </div>
             </div>
           </div>
-
-          <button
-            className="bg-tert w-full py-3 rounded-3xl text-white opacity-60"
-            disabled
-          >
-            Continue
-          </button>
+          {/* ${formFilled? "opacity-60" : "opacity-100"}`} */}
+          {formFilled ? (
+            <button
+              className="bg-tert w-full py-3 rounded-3xl text-white opacity-100"
+              onClick={(e) => {
+                handleAuth(e);
+              }}
+            >
+              Continue
+            </button>
+          ) : (
+            <button
+              className="bg-tert w-full py-3 rounded-3xl text-white opacity-60"
+              disabled
+            >
+              Continue
+            </button>
+          )}
         </form>
       </div>
       <div
