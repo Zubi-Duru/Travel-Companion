@@ -215,7 +215,7 @@ const countryOptions = [
   { value: "zw", label: "Zimbabwe" },
 ];
 
-export default function page() {
+export default function ProfileSetup() {
   const [formFilled, setFormFilled] = useState(false);
   const [selectedRelationsOption, setSelectedRelationsOption] = useState(null);
   const [selectedReligionOption, setSelectedReligionOption] = useState(null);
