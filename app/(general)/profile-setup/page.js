@@ -289,7 +289,7 @@ export default function ProfileSetup() {
         </div>
         <div>
           <h2 className=" text-base md:text-xl text-prim font-medium">Interest</h2>
-          <div className="mt-2 md:mt-4 flex gap-y-3 md:gap-y-5 flex-wrap">
+          <div className="mt-2 md:mt-4 flex gap-y-3 lg:gap-y-5 flex-wrap">
             {tags.map((tag, i) => {
               return (
                 <span
