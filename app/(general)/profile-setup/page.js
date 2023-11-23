@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 const relationsOptions = [
@@ -215,14 +215,67 @@ const countryOptions = [
   { value: "zw", label: "Zimbabwe" },
 ];
 
+const tags = [
+  "Hiking",
+  "Education",
+  "Sport",
+  "Travelling",
+  "Art",
+  "Beach",
+  "Music",
+  "Party",
+  "Technology",
+  "History & Culture",
+  "Adventure Seeker",
+  "Photogrpahy",
+];
+
 export default function ProfileSetup() {
   const [formFilled, setFormFilled] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
   const [selectedRelationsOption, setSelectedRelationsOption] = useState(null);
   const [selectedReligionOption, setSelectedReligionOption] = useState(null);
   const [selectedHomeCountryOption, setSelectedHomeCountryOption] =
     useState(null);
   const [selectedDestinationCountryOption, setDestinationCountryOption] =
     useState(null);
+
+  useEffect(() => {
+    if (
+      selectedRelationsOption &&
+      selectedReligionOption &&
+      selectedHomeCountryOption &&
+      selectedDestinationCountryOption
+    )
+      setFormFilled(true);
+  }, [
+    selectedRelationsOption,
+    selectedReligionOption,
+    selectedHomeCountryOption,
+    selectedDestinationCountryOption,
+  ]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      selectedRelationsOption &&
+      selectedReligionOption &&
+      selectedHomeCountryOption &&
+      selectedDestinationCountryOption
+    ) {
+      console.log(
+        selectedRelationsOption,
+        selectedReligionOption,
+        selectedHomeCountryOption,
+        selectedDestinationCountryOption
+      );
+    }
+  };
+
+  const handleTagClick = (e, tag) => {
+    setSelectedTags((prevTags) => [...prevTags, tag]);
+    console.log(selectedTags);
+  };
   return (
     <main className="h-[calc(100vh-64px)] w-full text-sm">
       <section className="h-full px-4 md:px-5 lg:px-20 xl:px-28 w-full flex flex-col gap-10 pt-5 md:pt-10">
@@ -235,15 +288,34 @@ export default function ProfileSetup() {
           </p>
         </div>
         <div>
-          <h2 className=" text-base md:text-xl text-prim">Interest</h2>
-          <div></div>
+          <h2 className=" text-base md:text-xl text-prim font-medium">Interest</h2>
+          <div className="mt-2 md:mt-4 flex gap-y-3 md:gap-y-5 flex-wrap">
+            {tags.map((tag, i) => {
+              return (
+                <span
+                  key={i}
+                  onClick={(e) => {
+                    handleTagClick(e, tag);
+                  }}
+                  className={
+                    selectedTags.includes(tag)
+                      ? "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border bg-gradient-to-br border-[1px] border-transparent from-[#FD6E6A] to-[#FFC600]  inline-block mr-2 md:mr-5"
+                      : "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border border-[1px] inline-block mr-2 md:mr-5"
+                  }
+                >
+                  {tag}
+                </span>
+              );
+            })}
+
+          </div>
         </div>
         <div>
-          <h2 className=" text-base md:text-xl text-prim">More Information</h2>
+          <h2 className=" text-base md:text-xl text-prim font-medium">More Information</h2>
           <form className=" flex flex-wrap gap-x-12 gap-y-6 w-full mt-2 md:mt-4">
             <div className="w-full md:w-2/5">
               <label htmlFor="homeCountry">Current Country</label>
-              <Select className="" 
+              <Select
                 defaultValue={selectedHomeCountryOption}
                 onChange={setSelectedHomeCountryOption}
                 options={countryOptions}
@@ -253,7 +325,8 @@ export default function ProfileSetup() {
             </div>
             <div className="w-full md:w-2/5">
               <label htmlFor="destination">Destination Country</label>
-              <Select  className=""
+              <Select
+                className=""
                 defaultValue={selectedDestinationCountryOption}
                 onChange={setDestinationCountryOption}
                 options={countryOptions}
@@ -263,7 +336,8 @@ export default function ProfileSetup() {
             </div>
             <div className="w-full md:w-2/5">
               <label htmlFor="status">Relationship Status</label>
-              <Select className=""
+              <Select
+                className=""
                 defaultValue={selectedRelationsOption}
                 onChange={setSelectedRelationsOption}
                 options={relationsOptions}
@@ -273,7 +347,7 @@ export default function ProfileSetup() {
             </div>
             <div className="w-full md:w-2/5">
               <label htmlFor="religion">Religion</label>
-              <Select className=""
+              <Select
                 defaultValue={selectedReligionOption}
                 onChange={setSelectedReligionOption}
                 options={religiousOptions}
@@ -285,7 +359,7 @@ export default function ProfileSetup() {
               <button
                 className="bg-tert w-full md:w-2/5 py-3  md:mt-4 rounded-3xl text-white opacity-100"
                 onClick={(e) => {
-                  handleAuth(e);
+                  handleSubmit(e);
                 }}
               >
                 Proceed
