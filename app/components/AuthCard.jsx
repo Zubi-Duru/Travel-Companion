@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AuthCard() {
+  const router= useRouter()
   const [openTab, setOpenTab] = useState(1);
   const [formFilled, setFormFilled] = useState(false);
   const [username, setUsername] = useState("");
@@ -39,6 +41,7 @@ export default function AuthCard() {
   };
 
   const handleAuth = (e) => {
+    e.preventDefault()
     if (openTab == 1) {
       console.log("signup");
       handleSignUp;
@@ -47,6 +50,7 @@ export default function AuthCard() {
       console.log("login");
       handleLogin;
     }
+    router.push("/profile-setup")
   };
 
   return (
