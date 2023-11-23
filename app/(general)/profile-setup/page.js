@@ -12,6 +12,9 @@ export default function page() {
         </div>
         <div>
           <h2>More Information</h2>
+          <div>
+         
+          </div>
         </div>
       </section>
     </main>
