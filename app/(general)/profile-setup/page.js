@@ -267,17 +267,24 @@ export default function ProfileSetup() {
         selectedRelationsOption,
         selectedReligionOption,
         selectedHomeCountryOption,
-        selectedDestinationCountryOption
+        selectedDestinationCountryOption,
+        selectedTags
       );
     }
   };
 
   const handleTagClick = (e, tag) => {
-    setSelectedTags((prevTags) => [...prevTags, tag]);
-    console.log(selectedTags);
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags((prevTags) => [...prevTags, tag]);
+    }
+    if (selectedTags.includes(tag)) {
+      setSelectedTags((prevTags) => {
+       return prevTags.filter((prevTag) => (prevTag != tag));
+      });
+    }
   };
   return (
-    <main className="h-[calc(100vh-64px)] w-full text-sm">
+    <main className="pb-20 w-full text-sm">
       <section className="h-full px-4 md:px-5 lg:px-20 xl:px-28 w-full flex flex-col gap-10 pt-5 md:pt-10">
         <div>
           <h1 className="font-semibold text-lg md:text-2xl text-prim">
@@ -288,7 +295,9 @@ export default function ProfileSetup() {
           </p>
         </div>
         <div>
-          <h2 className=" text-base md:text-xl text-prim font-medium">Interest</h2>
+          <h2 className=" text-base md:text-xl text-prim font-medium">
+            Interest
+          </h2>
           <div className="mt-2 md:mt-4 flex gap-y-3 lg:gap-y-5 flex-wrap">
             {tags.map((tag, i) => {
               return (
@@ -298,7 +307,7 @@ export default function ProfileSetup() {
                     handleTagClick(e, tag);
                   }}
                   className={
-                    selectedTags.includes(tag)
+                    selectedTags?.includes(tag)
                       ? "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border bg-gradient-to-br border-[1px] border-transparent from-[#FD6E6A] to-[#FFC600]  inline-block mr-2 md:mr-5"
                       : "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border border-[1px] inline-block mr-2 md:mr-5"
                   }
@@ -307,11 +316,12 @@ export default function ProfileSetup() {
                 </span>
               );
             })}
-
           </div>
         </div>
         <div>
-          <h2 className=" text-base md:text-xl text-prim font-medium">More Information</h2>
+          <h2 className=" text-base md:text-xl text-prim font-medium">
+            More Information
+          </h2>
           <form className=" flex flex-wrap gap-x-12 gap-y-6 w-full mt-2 md:mt-4">
             <div className="w-full md:w-2/5">
               <label htmlFor="homeCountry">Current Country</label>
