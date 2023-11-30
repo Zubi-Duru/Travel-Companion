@@ -31,13 +31,8 @@ export default function NavLinks() {
             Login
           </Link>
         </li>
-        <li>
-          <Link
-            href={`/auth`}
-            className="hidden md:block text-tert border-[1px] border-tert py-2 px-4 rounded-3xl"
-          >
-            Sign Up
-          </Link>
+        <li className="hidden md:block">
+         <BtnSec url={"/auth"}>Sign Up</BtnSec>
         </li>
       </ul>
     </>

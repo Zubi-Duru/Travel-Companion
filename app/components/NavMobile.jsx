@@ -3,6 +3,7 @@
 import NavLinks from "./NavLinks";
 import Link from "next/link";
 import Logo from "./Logo";
+import BtnSec from "./BtnSec";
 import { useState } from "react";
 export default function NavMobile() {
   const [dropdown, setDropdown] = useState(false);
@@ -15,12 +16,7 @@ export default function NavMobile() {
         <Logo />
         <div className="flex space-x-2 items-center">
           <div>
-            <Link
-              href={`/auth`}
-              className=" text-tert font-medium border-[1px] border-tert py-1.5 px-4 rounded-3xl"
-            >
-              Sign Up
-            </Link>
+            <BtnSec url={"/auth"}>Sign up</BtnSec>
           </div>
           <div
             onClick={(e) => {
@@ -56,7 +52,13 @@ export default function NavMobile() {
           </div>
         </div>
       </div>
-      <nav className={`${dropdown ? "block absolute z-10 bg-white w-full p-4 drop-shadow-lg rounded-b-xl" : "hidden"}`}>
+      <nav
+        className={`${
+          dropdown
+            ? "block absolute z-10 bg-white w-full p-4 drop-shadow-lg rounded-b-xl"
+            : "hidden"
+        }`}
+      >
         <NavLinks />
       </nav>
     </>

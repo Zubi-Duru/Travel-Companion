@@ -227,7 +227,7 @@ const tags = [
   "Technology",
   "History & Culture",
   "Adventure Seeker",
-  "Photogrpahy",
+  "Photography",
 ];
 
 export default function ProfileSetup() {
@@ -308,7 +308,7 @@ export default function ProfileSetup() {
                   }}
                   className={
                     selectedTags?.includes(tag)
-                      ? "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border bg-gradient-to-br border-[1px] border-transparent from-[#FD6E6A] to-[#FFC600]  inline-block mr-2 md:mr-5"
+                      ? "rounded-3xl text-white px-3 md:px-5 py-1 md:py-2.5 box-border bg-gradient-to-br border-[1px] border-transparent from-[#FD6E6A] to-[#FFC600]  inline-block mr-2 md:mr-5"
                       : "rounded-3xl px-3 md:px-5 py-1 md:py-2.5 box-border border-[1px] inline-block mr-2 md:mr-5"
                   }
                 >
