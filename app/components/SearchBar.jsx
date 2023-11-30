@@ -1,7 +1,7 @@
 import BtnMain from "./BtnMain"
 export default function SearchBar({dummyQuery="Where are you going to?"}) {
   return (
-    <div style={{boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'}} className="px-2 py-2 rounded-[50px] w-full md:w-3/5 lg:w-1/2 flex items-center justify-center gap-3 ">
+    <div style={{boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)'}} className="px-2 py-2 rounded-[50px] w-full md:w-3/5 lg:w-1/2 flex items-center justify-center gap-3 ">
           <div className="ml-5">
             <svg
               width="24"

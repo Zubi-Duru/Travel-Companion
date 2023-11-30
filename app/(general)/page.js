@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 export default function Home() {
   return (
     <main>
-      <section className="mt-5 mx-4 mb-20 flex gap-y-10 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-12 lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
+      <section className="mt-8 mx-4 mb-20 flex gap-y-10 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-12 lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
         <div className="flex md:hidden justify-center w-full">
           <SearchBar />
         </div>
@@ -21,10 +21,10 @@ export default function Home() {
             Find Your <span className="text-tert">Travel Buddy</span> And Make
             Lifelong <span className="text-tert">Memories</span> 🏝️
           </h1>
-          <p className="text-base md:text-lg">
+          <h2 className="text-base md:text-lg">
             Discover and connect with fellow travelers and create timeless
             journeys together
-          </p>
+          </h2>
           <div className="flex items-center gap-x-8 md:gap-x-8 justify-center md:justify-start">
             <BtnMain url={"/"}>
               Get Started
@@ -105,7 +105,10 @@ export default function Home() {
         <SearchBar />
       </div>
       <section>
-        <div></div>
+        <div>
+          <h2>Quick Guide</h2>
+          <h3>How to get Started 🤙🏻</h3>
+        </div>
         <div></div>
       </section>
       <section>
