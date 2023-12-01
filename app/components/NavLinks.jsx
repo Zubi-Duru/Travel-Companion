@@ -20,19 +20,19 @@ export default function NavLinks() {
           </Link>
         </li>
         <li>
-          <Link href={`/auth`} className="md:hidden text-tert md:font-normal">
+          <Link href={`/auth?type=login`} className="md:hidden text-tert md:font-normal">
             Login
           </Link>
         </li>
       </ul>
       <ul className="flex md:space-x-3 lg:space-x-6 items-center">
         <li>
-          <Link href={`/auth`} className="hidden md:block text-tert">
+          <Link href={`/auth?type=login`} className="hidden md:block text-tert">
             Login
           </Link>
         </li>
         <li className="hidden md:block">
-         <BtnSec url={"/auth"}>Sign Up</BtnSec>
+         <BtnSec url={"/auth?type=signup"}>Sign Up</BtnSec>
         </li>
       </ul>
     </>

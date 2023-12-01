@@ -1,16 +1,25 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
-export default function AuthCard() {
+export default function AuthCard({ type }) {
   const router = useRouter();
-  const [openTab, setOpenTab] = useState(1);
+  const pathname = usePathname();
+  let tab;
+  if (type == "login") {
+    tab=2
+  } else {
+    tab=1
+  }
+
+  const [openTab, setOpenTab] = useState(tab);
   const [formFilled, setFormFilled] = useState(false);
   const [username, setUsername] = useState("");
   const [passwordNew, setPasswordNew] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  console.log(pathname);
   useEffect(() => {
     if (
       (openTab == 1 && username && passwordNew && email) ||
