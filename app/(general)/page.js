@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 export default function Home() {
   return (
     <main>
-      <section className="mt-8 mx-4 mb-20 flex gap-y-10 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-12 lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
+      <section className="mt-8 mx-4 mb-20 flex gap-y-12 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-12 lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
         <div className="flex md:hidden justify-center w-full">
           <SearchBar />
         </div>
@@ -16,12 +16,12 @@ export default function Home() {
             height="100"
           />
         </div>
-        <div className=" md:l-5 lg:pl-20 xl:pl-28 row-start-[2] row-end-[10] col-start-[1] col-end-[7] flex flex-col gap-4 md:gap-6">
-          <h1 className="text-3xl xl:text-5xl  xl:leading-[3.5rem] font-extrabold">
+        <div className=" md:l-5 lg:pl-20 xl:pl-28 row-start-[2] row-end-[10] col-start-[1] col-end-[7] flex flex-col gap-5 md:gap-6">
+          <h1 className=" text-3xl xl:text-5xl  xl:leading-[3.5rem] font-extrabold">
             Find Your <span className="text-tert">Travel Buddy</span> And Make
             Lifelong <span className="text-tert">Memories</span> 🏝️
           </h1>
-          <h2 className="text-base md:text-lg">
+          <h2 className="text-sm md:text-lg">
             Discover and connect with fellow travelers and create timeless
             journeys together
           </h2>
