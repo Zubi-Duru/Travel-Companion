@@ -152,7 +152,7 @@ export default function Home() {
         <div className="basis-1/2 w-full hidden lg:block">
         <Image
             className="w-full"
-            src={"/assets/heroA.png"}
+            src={"/assets/travelImg.png"}
             width="100"
             height="100"
           />

@@ -2,22 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import AsyncSelect from "react-select/async";
 
-const relationsOptions = [
-  { value: "single", label: "Single" },
-  { value: "married", label: "Married" },
+const genderOptions = [
+  { value: "male", label: "Male" },
+  { value: "Female", label: "Female" },
   { value: "none", label: "Prefer not to say" },
 ];
-const religiousOptions = [
-  { value: "Christian", label: "Christian" },
-  { value: "Islam", label: "Islam" },
-  { value: "Buddhism", label: "Buddhism" },
-  { value: "Hinduism", label: "Hinduism" },
-  { value: "Jewish", label: "Jewish" },
-  { value: "Traditionalist", label: "Traditionalist" },
-  { value: "Atheist", label: "Atheist" },
-  { value: "none", label: "Other" },
-];
+
 const countryOptions = [
   { value: "af", label: "Afghanistan" },
   { value: "al", label: "Albania" },
@@ -230,59 +222,161 @@ const tags = [
   "Photography",
 ];
 
+// const MyAsyncSelect = () => {
+//   // Function to load options asynchronously
+//   const loadOptions = async (inputValue, callback) => {
+//     try {
+//       // Make your API call here based on the inputValue
+//       // For example, fetch data from an endpoint
+//       const response = await fetch(
+//         `https://api.example.com/search?query=${inputValue}`
+//       );
+//       const data = await response.json();
+
+//       // Transform the data into the format react-select expects
+//       const options = data.map((item) => ({
+//         value: item.id,
+//         label: item.name,
+//       }));
+
+//       // Call the callback function with the loaded options
+//       callback(options);
+//     } catch (error) {
+//       console.error("Error fetching options:", error);
+//     }
+//   };
+
+//   return (
+//     <AsyncSelect
+//       isClearable
+//       isSearchable
+//       cacheOptions
+//       defaultOptions
+//       loadOptions={loadOptions}
+//       placeholder="Search..."
+//     />
+//   );
+// };
+
 export default function ProfileSetup() {
   const [formFilled, setFormFilled] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedRelationsOption, setSelectedRelationsOption] = useState(null);
-  const [selectedReligionOption, setSelectedReligionOption] = useState(null);
+  const [selectedGenderOption, setSelectedGenderOption] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [selectedHomeCountryOption, setSelectedHomeCountryOption] =
     useState(null);
   const [selectedDestinationCountryOption, setDestinationCountryOption] =
     useState(null);
+  const [selectedHomeCityOption, setSelectedHomeCityOption] = useState(null);
+  const [selectedDestinationCityOption, setDestinationCityOption] =
+    useState(null);
+
+  const loadDestinationCityOptions = async (inputValue, callback) => {
+    if (selectedDestinationCountryOption && inputValue) {
+      try {
+        const response = await fetch(
+          `api/places?input=${inputValue}&country=${selectedDestinationCountryOption.value}`
+        );
+        const data = await response.json();
+        console.log(data);
+
+        let places = [];
+        data?.data?.predictions?.map((place, i) => {
+          console.log(place);
+          places = [
+            ...places,
+            { value: place.description, label: place.description },
+          ];
+        });
+
+        callback(places);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  const loadHomeCityOptions = async (inputValue, callback) => {
+    if (selectedHomeCountryOption && inputValue) {
+      try {
+        const response = await fetch(
+          `api/places?input=${inputValue}&country=${selectedHomeCountryOption.value}`
+        );
+        const data = await response.json();
+        console.log(data);
+
+        let places = [];
+        data?.data?.predictions?.map((place, i) => {
+          console.log(place);
+          places = [
+            ...places,
+            { value: place.description, label: place.description },
+          ];
+        });
+
+        callback(places);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
   useEffect(() => {
     if (
-      selectedRelationsOption &&
-      selectedReligionOption &&
+      selectedGenderOption &&
+      birthDate &&
       selectedHomeCountryOption &&
-      selectedDestinationCountryOption && selectedTags
+      selectedDestinationCountryOption &&
+      selectedTags.length
     )
       setFormFilled(true);
   }, [
-    selectedRelationsOption,
-    selectedReligionOption,
+    selectedGenderOption,
+    birthDate,
     selectedHomeCountryOption,
-    selectedDestinationCountryOption,
+    selectedDestinationCountryOption,selectedTags
   ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      selectedRelationsOption &&
-      selectedReligionOption &&
+      selectedGenderOption &&
+      birthDate &&
       selectedHomeCountryOption &&
-      selectedDestinationCountryOption
+      selectedDestinationCountryOption &&
+      selectedDestinationCityOption &&
+      selectedHomeCityOption && selectedTags.length
     ) {
       console.log(
-        selectedRelationsOption,
-        selectedReligionOption,
+        selectedGenderOption,
+        birthDate,
         selectedHomeCountryOption,
         selectedDestinationCountryOption,
-        selectedTags
+        selectedTags,
+        selectedDestinationCityOption,
+        selectedHomeCityOption
       );
     }
+  };
+
+  const handleInputChange = (e, set) => {
+    set(e.target.value);
   };
 
   const handleTagClick = (e, tag) => {
     if (!selectedTags.includes(tag)) {
       setSelectedTags((prevTags) => [...prevTags, tag]);
+      if (selectedTags.length > 2) {
+        selectedTags.pop();
+      }
     }
     if (selectedTags.includes(tag)) {
       setSelectedTags((prevTags) => {
-       return prevTags.filter((prevTag) => (prevTag != tag));
+        return prevTags.filter((prevTag) => prevTag != tag);
       });
     }
   };
+
   return (
     <main className="pb-20 w-full text-sm">
       <section className="h-full px-4 md:px-5 lg:px-20 xl:px-28 w-full flex flex-col gap-10 pt-5 md:pt-10">
@@ -326,6 +420,7 @@ export default function ProfileSetup() {
             <div className="w-full md:w-2/5">
               <label htmlFor="homeCountry">Current Country</label>
               <Select
+                className="text-prim placeholder-black placeholder-opacity-25"
                 defaultValue={selectedHomeCountryOption}
                 onChange={setSelectedHomeCountryOption}
                 options={countryOptions}
@@ -334,34 +429,62 @@ export default function ProfileSetup() {
               />
             </div>
             <div className="w-full md:w-2/5">
-              <label htmlFor="destination">Destination Country</label>
+              <label htmlFor="destinationCountry">Destination Country</label>
               <Select
-                className=""
+                className="text-prim placeholder-black placeholder-opacity-25"
                 defaultValue={selectedDestinationCountryOption}
                 onChange={setDestinationCountryOption}
                 options={countryOptions}
-                id="destination"
+                id="destinationCountry"
                 placeholder={"United Kingdom"}
               />
             </div>
             <div className="w-full md:w-2/5">
-              <label htmlFor="status">Relationship Status</label>
-              <Select
-                className=""
-                defaultValue={selectedRelationsOption}
-                onChange={setSelectedRelationsOption}
-                options={relationsOptions}
-                placeholder={"Single"}
-                id="status"
+              <label htmlFor="homeCity">Home City</label>
+              <AsyncSelect
+                className="text-prim placeholder-black placeholder-opacity-25"
+                defaultValue={selectedHomeCityOption}
+                onChange={setSelectedHomeCityOption}
+                loadOptions={loadHomeCityOptions}
+                id="homeCity"
+                placeholder={"United Kingdom"}
               />
             </div>
+
             <div className="w-full md:w-2/5">
-              <label htmlFor="religion">Religion</label>
+              <label htmlFor="destinationCity">Destination City</label>
+              <AsyncSelect
+                className="text-prim placeholder-black placeholder-opacity-25"
+                defaultValue={selectedDestinationCityOption}
+                onChange={setDestinationCityOption}
+                loadOptions={loadDestinationCityOptions}
+                id="destinationCity"
+                placeholder={"United Kingdom"}
+              />
+            </div>
+
+            <div className="w-full md:w-2/5">
+              <label htmlFor="gender">Gender</label>
               <Select
-                defaultValue={selectedReligionOption}
-                onChange={setSelectedReligionOption}
-                options={religiousOptions}
-                id="religion"
+                className="text-prim placeholder-black placeholder-opacity-25"
+                defaultValue={selectedGenderOption}
+                onChange={setSelectedGenderOption}
+                options={genderOptions}
+                placeholder={"Male"}
+                id="gender"
+              />
+            </div>
+
+            <div className="w-full md:w-2/5">
+              <label htmlFor="dob">Date of Birth</label>
+              <input
+                onChange={(e) => {
+                  handleInputChange(e, setBirthDate);
+                }}
+                className="text-prim placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
+                type="date"
+                id="dob"
+                value={birthDate}
               />
             </div>
 
@@ -388,3 +511,5 @@ export default function ProfileSetup() {
     </main>
   );
 }
+
+// AIzaSyCmOgL2vwqPlCA_PDPRBwM5loi9eIhmPtI
