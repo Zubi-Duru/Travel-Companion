@@ -222,47 +222,11 @@ const tags = [
   "Photography",
 ];
 
-// const MyAsyncSelect = () => {
-//   // Function to load options asynchronously
-//   const loadOptions = async (inputValue, callback) => {
-//     try {
-//       // Make your API call here based on the inputValue
-//       // For example, fetch data from an endpoint
-//       const response = await fetch(
-//         `https://api.example.com/search?query=${inputValue}`
-//       );
-//       const data = await response.json();
-
-//       // Transform the data into the format react-select expects
-//       const options = data.map((item) => ({
-//         value: item.id,
-//         label: item.name,
-//       }));
-
-//       // Call the callback function with the loaded options
-//       callback(options);
-//     } catch (error) {
-//       console.error("Error fetching options:", error);
-//     }
-//   };
-
-//   return (
-//     <AsyncSelect
-//       isClearable
-//       isSearchable
-//       cacheOptions
-//       defaultOptions
-//       loadOptions={loadOptions}
-//       placeholder="Search..."
-//     />
-//   );
-// };
-
 export default function ProfileSetup() {
   const [formFilled, setFormFilled] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedGenderOption, setSelectedGenderOption] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [travelDate, setTravelDate] = useState("");
   const [selectedHomeCountryOption, setSelectedHomeCountryOption] =
     useState(null);
   const [selectedDestinationCountryOption, setDestinationCountryOption] =
@@ -270,6 +234,8 @@ export default function ProfileSetup() {
   const [selectedHomeCityOption, setSelectedHomeCityOption] = useState(null);
   const [selectedDestinationCityOption, setDestinationCityOption] =
     useState(null);
+  const [homeGeoLocation, setHomeGeoLocation] = useState(null);
+  const [destinationGeoLocation, setDestinationGeoLocation] = useState(null);
 
   const loadDestinationCityOptions = async (inputValue, callback) => {
     if (selectedDestinationCountryOption && inputValue) {
@@ -321,40 +287,83 @@ export default function ProfileSetup() {
     }
   };
 
+  const getGeoLocation = async (address) => {
+    try {
+      const response = await fetch(`api/geoLocate?address=${address}`);
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
+    let isMounted = true;
     if (
       selectedGenderOption &&
-      birthDate &&
+      travelDate &&
       selectedHomeCountryOption &&
       selectedDestinationCountryOption &&
       selectedTags.length
-    )
+    ) {
       setFormFilled(true);
+
+      const fetchData = async () => {
+        try {
+          if (
+            formFilled &&
+            selectedDestinationCityOption &&
+            selectedHomeCityOption
+          ) {
+            const destinationData = await getGeoLocation("Westbury, UK");
+            const homeData = await getGeoLocation(selectedHomeCityOption.value);
+            console.log(homeData);
+            if (isMounted) {
+              setDestinationGeoLocation(destinationData);
+              setHomeGeoLocation(homeData);
+            }
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, [
     selectedGenderOption,
-    birthDate,
+    travelDate,
     selectedHomeCountryOption,
-    selectedDestinationCountryOption,selectedTags
+    selectedDestinationCountryOption,
+    selectedTags,
+    formFilled,
   ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
       selectedGenderOption &&
-      birthDate &&
+      travelDate &&
       selectedHomeCountryOption &&
       selectedDestinationCountryOption &&
       selectedDestinationCityOption &&
-      selectedHomeCityOption && selectedTags.length
+      selectedHomeCityOption &&
+      selectedTags.length
     ) {
       console.log(
         selectedGenderOption,
-        birthDate,
+        travelDate,
         selectedHomeCountryOption,
         selectedDestinationCountryOption,
         selectedTags,
         selectedDestinationCityOption,
-        selectedHomeCityOption
+        selectedHomeCityOption,
+        homeGeoLocation,
+        destinationGeoLocation
       );
     }
   };
@@ -414,7 +423,7 @@ export default function ProfileSetup() {
         </div>
         <div>
           <h2 className=" text-base md:text-xl text-prim font-medium">
-            More Information
+            Travel Information
           </h2>
           <form className=" flex flex-wrap gap-x-12 gap-y-6 w-full mt-2 md:mt-4">
             <div className="w-full md:w-2/5">
@@ -476,15 +485,15 @@ export default function ProfileSetup() {
             </div>
 
             <div className="w-full md:w-2/5">
-              <label htmlFor="dob">Date of Birth</label>
+              <label htmlFor="travelDate">Travel Date</label>
               <input
                 onChange={(e) => {
-                  handleInputChange(e, setBirthDate);
+                  handleInputChange(e, setTravelDate);
                 }}
                 className="text-prim placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
                 type="date"
-                id="dob"
-                value={birthDate}
+                id="travelDate"
+                value={travelDate}
               />
             </div>
 
@@ -511,5 +520,3 @@ export default function ProfileSetup() {
     </main>
   );
 }
-
-// AIzaSyCmOgL2vwqPlCA_PDPRBwM5loi9eIhmPtI
