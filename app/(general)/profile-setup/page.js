@@ -493,6 +493,7 @@ export default function ProfileSetup() {
                 className="text-prim bg-transparent placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
                 type="date"
                 id="travelDate"
+                onFocus={(e) => (e.target.type = 'date')}
                 placeholder="dd/mm/yy"
                 value={travelDate}
               />
