@@ -105,6 +105,14 @@ export default function Home() {
           </div>
           <div className="rounded-3xl overflow-clip -mt-10 md:mt-0 h-full">
             <Image
+              className="hidden lg:block w-full h-full lg:-mt-8 xl:-mt-5"
+              src={"/assets/heroBi.png"}
+              width="1000"
+              height="2000"
+            />
+          </div>
+          <div className="lg:hidden rounded-3xl overflow-clip -mt-10 md:mt-0 h-full">
+            <Image
               className="w-full h-full"
               src={"/assets/heroMob.png"}
               width="1000"
