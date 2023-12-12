@@ -5,20 +5,20 @@ import Card1 from "../components/Card1";
 export default function Home() {
   return (
     <main>
-      <section className="text-sm mt-8 mx-4 mb-20 flex gap-y-10 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-12 lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
+      <section className="text-sm mt-8 mx-4 mb-16 flex gap-y-10 text-center md:text-left flex-wrap items-center md:gap-0 md:gap-x-3 md:mx-10 md:flex-nowrap lg:grid lg:grid-cols-[10] lg:grid-rows-[10] lg:gap-x-3 lg:mx-0 lg:mt-0">
         <div className="flex md:hidden justify-center w-full">
           <SearchBar />
         </div>
-        <div className="hidden lg:block row-start-[8] xl:row-start-[7] row-end-[11] col-start-[1] col-end-[3] w-4/5">
+        <div className="hidden lg:block row-start-[8] xl:row-start-[7] row-end-[11] col-start-[1] col-end-[3] ">
           <Image
             className="w-full"
             src={"/assets/plane.png"}
-            width="100"
+            width="200"
             height="100"
           />
         </div>
-        <div className="md:basis-1/2 w-full md:l-5 lg:pl-20 xl:pl-28 row-start-[2] row-end-[10] col-start-[1] col-end-[7] flex flex-col gap-6">
-          <h1 className=" text-3xl xl:text-5xl  xl:leading-[3.5rem] font-extrabold">
+        <div className="md:basis-1/2 w-full md:l-5 lg:pl-20 xl:pl-28 row-start-[2] row-end-[10] col-start-[1] col-end-[5] flex flex-col gap-6">
+          <h1 className=" text-3xl xl:text-[2.7rem]  xl:leading-[3.5rem] font-extrabold">
             Find Your <span className="text-tert">Travel Buddy</span> And Make
             Lifelong <span className="text-tert">Memories</span> 🏝️
           </h1>
@@ -75,7 +75,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden lg:block row-start-[2] row-end-[10] col-start-[7] col-end-[10]">
+        <div className="hidden lg:block row-start-[2] row-end-[10] col-start-[5] col-end-[8]">
           <div>
             <Image
               className="h-full w-full"
@@ -86,16 +86,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hidden lg:block row-start-[1] row-end-[3] col-start-[10] col-end-[13] lg:-mb-6 xl:-mb-3 mx-auto">
+        <div className="hidden lg:block row-start-[1] row-end-[3] col-start-[8] col-end-[11]  mx-auto">
           <Image
             className=""
             src={"/assets/kite.png"}
-            width="100"
+            width="135"
             height="100"
           />
         </div>
-        <div className="md:basis-1/2 w-full row-start-[3] row-end-[11] col-start-[10] col-end-[13]">
-          <div className="inline-block md:hidden mx-auto -mb-10">
+        <div className="md:basis-1/2 w-full row-start-[3] row-end-[11] col-start-[8] col-end-[11] -mt-5">
+          <div className="inline-block md:hidden mx-auto ">
             <Image
               className=""
               src={"/assets/kite.png"}
@@ -150,12 +150,7 @@ export default function Home() {
           </div>
         </div>
         <div className="basis-1/2 w-full hidden lg:block">
-        <Image
-            className="w-full"
-            src={"/assets/travelImg.png"}
-            width="100"
-            height="100"
-          />
+
         </div>
       </section>
       <section>

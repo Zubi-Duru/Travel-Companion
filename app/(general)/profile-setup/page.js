@@ -434,7 +434,7 @@ export default function ProfileSetup() {
                 onChange={setSelectedHomeCountryOption}
                 options={countryOptions}
                 id="homeCountry"
-                placeholder={"Nigeria"}
+                placeholder={"Select a Country"}
               />
             </div>
             <div className="w-full md:w-2/5">
@@ -445,7 +445,7 @@ export default function ProfileSetup() {
                 onChange={setDestinationCountryOption}
                 options={countryOptions}
                 id="destinationCountry"
-                placeholder={"United Kingdom"}
+                placeholder={"Select a Country"}
               />
             </div>
             <div className="w-full md:w-2/5">
@@ -456,7 +456,7 @@ export default function ProfileSetup() {
                 onChange={setSelectedHomeCityOption}
                 loadOptions={loadHomeCityOptions}
                 id="homeCity"
-                placeholder={"United Kingdom"}
+                placeholder={"Search for a City"}
               />
             </div>
 
@@ -468,7 +468,7 @@ export default function ProfileSetup() {
                 onChange={setDestinationCityOption}
                 loadOptions={loadDestinationCityOptions}
                 id="destinationCity"
-                placeholder={"United Kingdom"}
+                placeholder={"Search for a City"}
               />
             </div>
 
@@ -491,9 +491,8 @@ export default function ProfileSetup() {
                   handleInputChange(e, setTravelDate);
                 }}
                 className="text-prim bg-transparent placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
-                type="text"
+                type="date"
                 id="travelDate"
-                onFocus={(e) => (e.target.type = 'date')}
                 placeholder="dd/mm/yy"
                 value={travelDate}
               />

@@ -27,7 +27,7 @@ export default function SearchBar({dummyQuery="Where are you going to?"}) {
             </svg>
           </div>
           <input placeholder={dummyQuery} className="w-5/6 focus:outline-none"/>
-          <BtnMain>Search</BtnMain>
+          <BtnMain url="/auth">Search</BtnMain>
         </div>
   )
 }

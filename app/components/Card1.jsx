@@ -6,7 +6,7 @@ export default function Card1({ svgIcon, title, content }) {
       </div>
       <div>
         <h4 className="text-[#5E6282] text-base xl:text-lg md:mb-1 font-semibold">{title}</h4>
-        <p className="text-sm">{content}</p>
+        <p className="text-xs md:text-sm">{content}</p>
       </div>
     </div>
   );
