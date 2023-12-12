@@ -13,7 +13,7 @@ export default function Home() {
           <Image
             className="w-full"
             src={"/assets/plane.png"}
-            width="200"
+            width="150"
             height="100"
           />
         </div>
