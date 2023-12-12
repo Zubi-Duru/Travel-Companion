@@ -17,8 +17,8 @@ export default function Home() {
             height="100"
           />
         </div>
-        <div className="md:basis-1/2 w-full md:l-5 lg:pl-20 xl:pl-28 row-start-[2] row-end-[10] col-start-[1] col-end-[5] flex flex-col gap-6">
-          <h1 className=" text-3xl xl:text-[2.7rem]  xl:leading-[3.5rem] font-extrabold">
+        <div className="md:basis-1/2 w-full md:l-5 lg:pl-20 xl:pl-36 row-start-[1] row-end-[10] col-start-[1] col-end-[5] flex flex-col gap-6">
+          <h1 className=" text-3xl xl:text-[2.6rem]  xl:leading-[3.6rem] font-extrabold">
             Find Your <span className="text-tert">Travel Buddy</span> And Make
             Lifelong <span className="text-tert">Memories</span> 🏝️
           </h1>
@@ -103,10 +103,10 @@ export default function Home() {
               height="100"
             />
           </div>
-          <div className="rounded-3xl overflow-clip">
+          <div className="rounded-3xl overflow-clip -mt-10 ">
             <Image
               className="w-full h-full"
-              src={"/assets/heroBi.png"}
+              src={"/assets/heroMob.png"}
               width="1000"
               height="1000"
             />
@@ -116,7 +116,7 @@ export default function Home() {
       <div className="hidden md:flex justify-center mb-20">
         <SearchBar />
       </div>
-      <section className="text-sm mx-4 md:px-5 lg:px-20 xl:px-28 lg:flex items-center">
+      <section className="text-sm mx-4 md:px-5 lg:px-20 xl:px-36 lg:flex items-center">
         <div className="basis-1/2 w-full">
           <div className="mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">QUICK GUIDE</h2>
