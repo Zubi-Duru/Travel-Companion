@@ -18,7 +18,7 @@ export default function Home() {
           />
         </div>
         <div className="md:basis-1/2 w-full md:l-5 lg:pl-20 xl:pl-36 row-start-[1] row-end-[10] col-start-[1] col-end-[5] flex flex-col gap-6">
-          <h1 className=" text-3xl xl:text-[2.6rem]  xl:leading-[3.6rem] font-extrabold">
+          <h1 className="text-3xl xl:text-[2.6rem]  xl:leading-[3.6rem] font-bold xl:font-extrabold">
             Find Your <span className="text-tert">Travel Buddy</span> And Make
             Lifelong <span className="text-tert">Memories</span> 🏝️
           </h1>
@@ -94,7 +94,7 @@ export default function Home() {
             height="100"
           />
         </div>
-        <div className="md:basis-1/2 w-full row-start-[3] row-end-[11] col-start-[8] col-end-[11] -mt-5">
+        <div className="md:basis-1/2 w-full row-start-[3] row-end-[11] col-start-[8] col-end-[11] ">
           <div className="inline-block md:hidden mx-auto ">
             <Image
               className=""
@@ -103,12 +103,12 @@ export default function Home() {
               height="100"
             />
           </div>
-          <div className="rounded-3xl overflow-clip -mt-10 ">
+          <div className="rounded-3xl overflow-clip -mt-10 md:mt-0 h-full">
             <Image
               className="w-full h-full"
               src={"/assets/heroMob.png"}
               width="1000"
-              height="1000"
+              height="2000"
             />
           </div>
         </div>
