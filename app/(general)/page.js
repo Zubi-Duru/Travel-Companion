@@ -3,6 +3,8 @@ import BtnMain from "../components/BtnMain";
 import SearchBar from "../components/SearchBar";
 import Card1 from "../components/Card1";
 import Hero2Card from "../components/Hero2Card";
+import ReviewCard from "../components/ReviewCard";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
@@ -125,7 +127,7 @@ export default function Home() {
             <h2 className="text-tert text-lg font-semibold mb-2">
               QUICK GUIDE
             </h2>
-            <h3 className="text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
+            <h3 className="text-2xl md:text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
               How to get Started🤙🏻
             </h3>
           </div>
@@ -154,27 +156,35 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 md:flex items-center mb-20">
-        <div className="mb-10 text-center w-full">
+      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 items-center mb-20">
+        <div className="mb-10 md:text-center w-full">
           <h2 className="text-tert text-lg font-semibold mb-2">TESTIMONIAL</h2>
-          <h3 className="text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
+          <h3 className="text-2xl md:text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
             💬 What Others Are Saying
           </h3>
-          <p className="w-4/6 mx-auto mt-5">
+          <p className="md:w-4/6 md:mx-auto mt-2.5 md:mt-5 ">
             Real adventures, genuine connections, and authentic testimonials
-            from the heart of the journey. Join the community and let the world
-            hear your travel tales!
+            from the heart of the journey.
+            <span className="hidden md:inline">
+              Join the community and let the world hear your travel tales!
+            </span>
           </p>
         </div>
-        <div>
-          <div>
-            <div></div>
-            <p></p>
-            <div></div>
-            <p></p>
+        <div className="flex flex-col md:flex-row justify-between space-y-8 md:mt-20">
+          <div className=" px-4 md:px-0">
+            <ReviewCard />
+          </div>
+          <div className="md:scale-x-[1.1] md:scale-y-[1.2] px-4 md:px-0">
+            <ReviewCard />
+          </div>
+          <div className="px-4 md:px-0 ">
+            <ReviewCard />
           </div>
         </div>
       </section>
+      <>
+        <Navbar />
+      </>
     </main>
   );
 }
