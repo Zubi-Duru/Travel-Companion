@@ -2,6 +2,7 @@ import Image from "next/image";
 import BtnMain from "../components/BtnMain";
 import SearchBar from "../components/SearchBar";
 import Card1 from "../components/Card1";
+import Hero2Card from "../components/Hero2Card";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
               Find Your <span className="text-tert">Travel Buddy</span> And Make
               Lifelong <span className="text-tert">Memories</span> 🏝️
             </h1>
-            <h2 className="text-sm lg:text-lg">
+            <h2 className="text-sm w-4/5 mx-auto lg:text-lg md:mx-0 md:full ">
               Discover and connect with fellow travelers and create timeless
               journeys together
             </h2>
@@ -69,7 +70,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="hidden md:block md:w-24 lg:w-36 xl:w-48 absolute md:-bottom-12 lg:-bottom-20 z-0">
+          <div className="hidden md:block md:w-28 lg:w-36 xl:w-48 absolute md:-bottom-12 lg:-bottom-20 z-0">
             <Image
               className="w-full h-full"
               src={"/assets/plane.png"}
@@ -106,7 +107,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden w-full">
           <Image
             className="w-full h-full"
             src={"/assets/heroMob.png"}
@@ -118,7 +119,7 @@ export default function Home() {
       <div className="hidden md:flex justify-center mb-20">
         <SearchBar />
       </div>
-      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 lg:flex items-center">
+      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 md:flex items-center mb-20">
         <div className="basis-1/2 w-full">
           <div className="mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">
@@ -147,7 +148,11 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="basis-1/2 w-full hidden lg:block"></div>
+        <div className="basis-1/2 w-full hidden md:block">
+          <div className="scale-75 lg:scale-[0.8] mr-2">
+            <Hero2Card />
+          </div>
+        </div>
       </section>
       <section></section>
     </main>

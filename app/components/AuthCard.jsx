@@ -117,11 +117,9 @@ export default function AuthCard({ type }) {
               />
             </svg>
             <p className={`${openTab == 1 ? "block" : "hidden"}`}>
-              {" "}
               Sign up with facebook
             </p>
             <p className={`${openTab == 2 ? "block" : "hidden"}`}>
-              {" "}
               Continue with facebook
             </p>
           </button>
