@@ -1,12 +1,13 @@
 import Image from "next/image";
 import BtnMain from "../components/BtnMain";
 import SearchBar from "../components/SearchBar";
+import Card1 from "../components/Card1";
 
 export default function Home() {
   return (
     <main>
-      <section className="flex items-center">
-        <div className="basis-1/2  relative lg:-mt-14">
+      <section className="flex items-center mb-20">
+        <div className="basis-1/2 relative lg:-mt-14">
           <div className="md:ml-12 lg:ml-20 xl:ml-36 space-y-5 relative z-10">
             <h1 className="text-3xl xl:text-[2.6rem]  xl:leading-[3.6rem] font-bold xl:font-extrabold">
               Find Your <span className="text-tert">Travel Buddy</span> And Make
@@ -103,7 +104,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <section className="text-sm mx-4 md:px-5 lg:px-20 xl:px-36 lg:flex items-center">
+      <div className="hidden md:flex justify-center mb-20">
+        <SearchBar />
+      </div>
+      <section className="text-sm mx-4 md:px-5 lg:px-20 xl:px-36 lg:flex items-center">
         <div className="basis-1/2 w-full">
           <div className="mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">QUICK GUIDE</h2>
@@ -139,7 +143,7 @@ export default function Home() {
         <div className="basis-1/2 w-full hidden lg:block">
 
         </div>
-      </section> */}
+      </section>
       <section></section>
     </main>
   );
