@@ -119,7 +119,7 @@ export default function Home() {
       <div className="hidden md:flex justify-center mb-20">
         <SearchBar />
       </div>
-      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 md:flex items-center mb-20">
+      <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-20">
         <div className="basis-1/2 w-full">
           <div className="mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">
@@ -133,7 +133,7 @@ export default function Home() {
             <Card1
               svgIcon={<p className="text-xl">🔎</p>}
               title="Search for Destination"
-              content=" for your destination at the top bar and you will be
+              content="Search for your destination at the top bar and you will be
               prompted to signup if you don&#39;t have an account"
             />
             <Card1
@@ -148,13 +148,33 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="basis-1/2 w-full hidden md:block">
-          <div className="scale-75 lg:scale-[0.8] mr-2">
+        <div className="basis-1/2 w-full hidden md:flex justify-center">
+          <div className="scale-75 lg:scale-[0.8] origin-left">
             <Hero2Card />
           </div>
         </div>
       </section>
-      <section></section>
+      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 md:flex items-center mb-20">
+        <div className="mb-10 text-center w-full">
+          <h2 className="text-tert text-lg font-semibold mb-2">TESTIMONIAL</h2>
+          <h3 className="text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
+            💬 What Others Are Saying
+          </h3>
+          <p className="w-4/6 mx-auto mt-5">
+            Real adventures, genuine connections, and authentic testimonials
+            from the heart of the journey. Join the community and let the world
+            hear your travel tales!
+          </p>
+        </div>
+        <div>
+          <div>
+            <div></div>
+            <p></p>
+            <div></div>
+            <p></p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

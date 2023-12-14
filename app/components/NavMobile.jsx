@@ -12,7 +12,7 @@ export default function NavMobile() {
   };
   return (
     <>
-      <div className="flex justify-between items-center px-4 py-2">
+      <div className="flex justify-between items-center px-4 py-2 ">
         <Logo />
         <div className="flex space-x-2 items-center">
           <div>
@@ -55,7 +55,7 @@ export default function NavMobile() {
       <nav
         className={`${
           dropdown
-            ? "block absolute z-10 bg-white w-full p-4 drop-shadow-lg rounded-b-xl"
+            ? "block absolute z-20 bg-white w-full p-4 drop-shadow-lg rounded-b-xl"
             : "hidden"
         }`}
       >
