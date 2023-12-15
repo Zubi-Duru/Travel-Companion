@@ -121,7 +121,7 @@ export default function Home() {
       <div className="hidden md:flex justify-center mb-14 md:mb-20">
         <SearchBar />
       </div>
-      <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-14 md:mb-20">
+      <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-14 md:mb-20 gap-5">
         <div className="basis-1/2 w-full">
           <div className="mb-8 md:mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">

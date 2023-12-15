@@ -44,9 +44,9 @@ export default function ReviewCard({ dp, name, content, rating }) {
   };
 
   return (
-    <div className="flex border-[1px] border-[#DEDEDE] md:w-4/5 mx-auto flex-col items-center gap-3 rounded-2xl py-8 px-3 shadow-lg md:shadow-2xl">
+    <div className="flex border-[1px] border-[#DEDEDE] md:w-4/5 mx-auto flex-col items-center gap-3 rounded-xl md:rounded-2xl py-8 px-3 shadow-lg md:shadow-2xl">
       <div>{dp}</div>
-      <p className="text-center w-4/5 md:w-full text-[#737373]">{content}</p>
+      <p className="text-center w-4/5 md:w-full text-sm text-[#737373] my-2">{content}</p>
       <div className="flex">{starRating(rating)}</div>
       <p className="text-[#23A6F0] font-bold">{name}</p>
     </div>
