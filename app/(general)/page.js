@@ -12,7 +12,7 @@ export default function Home() {
       <div className="md:hidden my-5 mx-6">
         <SearchBar />
       </div>
-      <section className="flex flex-col gap-10 md:flex-row md:gap-0 items-center mb-12 md:mb-20">
+      <section className="flex flex-col gap-10 md:flex-row md:gap-0 items-center mb-14 md:mb-20">
         <div className="text-center md:text-start basis-1/2 relative lg:-mt-14">
           <div className="md:ml-12 lg:ml-20 xl:ml-36 space-y-5 relative z-10">
             <h1 className="text-3xl xl:text-[2.6rem]  xl:leading-[3.6rem] font-bold xl:font-extrabold">
@@ -118,12 +118,12 @@ export default function Home() {
           />
         </div>
       </section>
-      <div className="hidden md:flex justify-center mb-20">
+      <div className="hidden md:flex justify-center mb-14 md:mb-20">
         <SearchBar />
       </div>
-      <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-20">
+      <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-14 md:mb-20">
         <div className="basis-1/2 w-full">
-          <div className="mb-10">
+          <div className="mb-8 md:mb-10">
             <h2 className="text-tert text-lg font-semibold mb-2">
               QUICK GUIDE
             </h2>
@@ -156,8 +156,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 items-center mb-20">
-        <div className="mb-10 md:text-center w-full">
+      <section className="text-sm mx-4 md:mx-12 lg:mx-20 xl:mx-36 items-center mb-14 md:mb-20">
+        <div className="mb-8 md:mb-10 md:text-center w-full">
           <h2 className="text-tert text-lg font-semibold mb-2">TESTIMONIAL</h2>
           <h3 className="text-2xl md:text-3xl xl:text-5xl xl:leading-[3.5rem] font-extrabold text-[#14183E]">
             💬 What Others Are Saying
@@ -170,15 +170,51 @@ export default function Home() {
             </span>
           </p>
         </div>
-        <div className="flex flex-col md:flex-row justify-between space-y-8 md:mt-20">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:mt-20">
           <div className=" px-4 md:px-0">
-            <ReviewCard />
+            <ReviewCard
+              dp={
+                <Image
+                  className="w-24 h-24 object-cover"
+                  src="/assets/cover.png"
+                  width="100"
+                  height="200"
+                />
+              }
+              content="With the help of this travel buddy website, I met someone who shared my passion for adventure."
+              name="Henry Agu"
+              rating={4}
+            />
           </div>
           <div className="md:scale-x-[1.1] md:scale-y-[1.2] px-4 md:px-0">
-            <ReviewCard />
+            <ReviewCard
+              dp={
+                <Image
+                  className="w-24 h-24 object-cover"
+                  src="/assets/cover1.png"
+                  width="100"
+                  height="200"
+                />
+              }
+              content="I connected with an amazing travel buddy who had similar interests, and together we experienced the rich culture of Europe"
+              name="Siemeo Smith"
+              rating={5}
+            />
           </div>
-          <div className="px-4 md:px-0 ">
-            <ReviewCard />
+          <div className="px-4 md:px-0 hidden md:block">
+            <ReviewCard
+              dp={
+                <Image
+                  className="w-24 h-24 object-cover"
+                  src="/assets/cover2.png"
+                  width="100"
+                  height="200"
+                />
+              }
+              content="I was a bit hesitant about traveling alone, but I made a lifelong friend traveling. Highly recommended"
+              name="Patrick Duru"
+              rating={5}
+            />
           </div>
         </div>
       </section>
