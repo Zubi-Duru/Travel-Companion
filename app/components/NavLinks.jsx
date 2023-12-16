@@ -5,7 +5,7 @@ export default function NavLinks() {
     <>
       <ul className="text-base md:text-sm  lg:text-base flex flex-col pl-4 md:pl-0 space-y-2 md:space-y-0 md:flex-row md:space-x-3 lg:space-x-6">
         <li>
-          <Link href="/" className="md:font-normal">
+          <Link href="/dashboard" className="md:font-normal">
             Find Buddies
           </Link>
         </li>

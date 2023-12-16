@@ -25,7 +25,7 @@ export default function ReviewCard({ dp, name, content, rating }) {
       let blank = 5 - rating;
       for (let index = 0; index < blank; index++) {
         stars.push(
-          <svg
+          <svg key={index}
             width="22"
             height="22"
             viewBox="0 0 22 22"

@@ -1,12 +1,12 @@
-import Navbar from "../components/Navbar";
 import { Manrope } from "next/font/google";
 import "../globals.css";
 import 'dotenv/config'
+import Sidebar from "../components/Sidebar";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Travel Buddies",
-  description: "Travel Companion Site",
+  description: "Travel Companion App",
 };
 
 export default function RootLayout({ children }) {
@@ -24,12 +24,12 @@ export default function RootLayout({ children }) {
         href="/icon?<generated>"
         type="image/<generated>"
         sizes="<generated>"
-      />
-      </head>   
+      />  
+      </head>
       <body
-        className={`${manrope.className} text-prim text-sm md:text-base max-w-[1920px] mx-auto`}
+        className={`${manrope.className} text-prim bg-[#F4F5F7] text-sm md:text-base max-w-[1920px] mx-auto`}
       >
-        <Navbar />
+        <Sidebar/>
         {children}
       </body>
     </html>

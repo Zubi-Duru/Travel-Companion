@@ -24,7 +24,7 @@ export default function Home() {
               journeys together
             </h2>
             <div className="flex items-center gap-x-8 md:gap-x-8 justify-center md:justify-start">
-              <BtnMain url={"/"}>
+              <BtnMain url={"/auth"}>
                 Get Started
                 <svg
                   className="rotate-180 stroke-white inline ml-2"
