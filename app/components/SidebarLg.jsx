@@ -7,9 +7,8 @@ function Bullet() {
   return <div className="w-1.5 h-5 rounded-sm bg-tert"></div>;
 }
 
-export default function Sidebar() {
+export default function SidebarLg() {
   const segment = useSelectedLayoutSegment();
-  console.log(segment);
   return (
     <nav className="bg-white w-[220px] h-screen flex flex-col text-base">
       <div className="scale-[1.3] mt-10 mb-20 mx-auto">
