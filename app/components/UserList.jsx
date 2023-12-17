@@ -65,7 +65,7 @@ let users = [
 export default function UserList() {
     const [list,setList]=useState(4)
   return (
-    <div className="rounded-2xl md:px-5 bg-white">
+    <div className="px-1.5 rounded-2xl md:px-5 bg-white">
       <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 bg-white">
         People Going to Stanford
       </h2>
