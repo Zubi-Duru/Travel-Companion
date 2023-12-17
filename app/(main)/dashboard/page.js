@@ -12,9 +12,9 @@ let name = "Patrick";
 export default function Dashboard() {
   return (
     <main className="w-full">
-      <div className="hidden md:flex justify-between items-center my-4 px-6">
+      <div className="hidden md:flex justify-between items-center my-4 py-4 md:px-10 md:mb-12">
         <div className="pr-3 lg:pr-10 w-1/3">
-          <h1 className="text-xl lg:text-3xl font-bold mb-1"> Hello {name}!</h1>
+          <h1 className="text-xl lg:text-4xl font-bold mb-1"> Hello {name}!</h1>
           <p className="text-sm hidden lg:inline-block">Welcome back and explore new trips</p>
         </div>
 
@@ -53,7 +53,8 @@ export default function Dashboard() {
         <SearchBar/>
       </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-6">
+
+      <div className="flex flex-col md:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
         <div><UserList/></div>
       <div>hi</div>
       </div>
