@@ -1,3 +1,4 @@
+import HotSpotsCard from "@/app/components/HotSpotsCard";
 import SearchBar from "@/app/components/SearchBar";
 import UserList from "@/app/components/UserList";
 import Image from "next/image";
@@ -15,7 +16,9 @@ export default function Dashboard() {
       <div className="hidden md:flex justify-between items-center my-4 py-4 md:px-10 md:mb-12">
         <div className="pr-3 lg:pr-10 w-1/3">
           <h1 className="text-xl lg:text-4xl font-bold mb-1"> Hello {name}!</h1>
-          <p className="text-sm hidden lg:inline-block">Welcome back and explore new trips</p>
+          <p className="text-sm hidden lg:inline-block">
+            Welcome back and explore new trips
+          </p>
         </div>
 
         <div className="pr-4 w-full lg:w-4/6">
@@ -44,19 +47,24 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="md:hidden">
-      <div>
-      <hr className=""/>
-      <div className="font-extrabold text-xl my-3 pl-5">Home</div>
-      <hr/>
-      </div>
-      <div className="px-4 my-8">
-        <SearchBar/>
-      </div>
+        <div>
+          <hr className="" />
+          <div className="font-extrabold text-xl my-3 pl-5">Home</div>
+          <hr />
+        </div>
+        <div className="px-4 my-8">
+          <SearchBar />
+        </div>
       </div>
 
       <div className="flex flex-col md:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
-        <div><UserList/></div>
-      <div>hi</div>
+        <div className="space-y-10 basis-1/2">
+          <div>
+            <UserList />
+          </div>
+          <div className="mb-10"><HotSpotsCard/></div>
+        </div>
+        <div className="basis-1/2">hi</div>
       </div>
     </main>
   );

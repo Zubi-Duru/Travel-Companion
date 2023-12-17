@@ -74,7 +74,7 @@ export default function UserList() {
           if (i < list) {
             return (
               <div
-                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white shadow-md"}  rounded-xl space-x-1.5 md:space-x-3 px-2 py-4 md:p-4`}
+                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white drop-shadow-md"}  rounded-xl space-x-1.5 md:space-x-3 px-2 py-4 md:p-4`}
                 key={user.name}
               >
                 <div className="w-12 md:w-14">
