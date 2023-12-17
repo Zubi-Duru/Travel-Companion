@@ -5,6 +5,12 @@ import Image from "next/image";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
 
+//API getUsers
+// 1. get destination country for the flag 
+// 2. get dp
+let destinationCountry="NG"
+let dp="/assets/dp.png"
+
 function Bullet() {
   return <div className="w-1.5 h-12 rounded-sm bg-tert"></div>;
 }
@@ -12,6 +18,9 @@ function Bullet() {
 export default function SidebarMobile() {
   const segment = useSelectedLayoutSegment();
   const [SidebarIsOpen, setSidebarIsOpen] = useState(false);
+
+
+
 
   return (
     <>
@@ -54,7 +63,7 @@ export default function SidebarMobile() {
             <div className="w-8 h-8 rounded-full overflow-hidden flex items-center ">
               <Image
                 className="w-16 h-16 rounded-full scale-[1.05]"
-                src="https://flagsapi.com/BE/flat/64.png"
+                src={`https://flagsapi.com/${destinationCountry}/flat/64.png`}
                 width="150"
                 height="150"
               />
@@ -63,7 +72,7 @@ export default function SidebarMobile() {
           <div className="w-10 h-10 rounded-full overflow-hidden ">
             <Image
               className="w-full h-full rounded-full"
-              src="/assets/dp.png"
+              src={`${dp}`}
               width="2500"
               height="2500"
             />
@@ -337,7 +346,7 @@ export default function SidebarMobile() {
             </Link>
           </li>
         </ul>
-        <div className="mt-auto mb-12 w-fit pl-[2.875rem] lg:pl-[3.375rem]">
+        <div className="mt-auto mb-12 w-fit pl-7">
           <Link href={"/dashboard"}>
             <div className="flex gap-2">
               <svg

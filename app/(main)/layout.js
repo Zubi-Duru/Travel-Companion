@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       />  
       </head>
       <body
-        className={`${manrope.className} text-prim bg-[#F4F5F7] text-sm md:text-base max-w-[1920px] mx-auto`}
+        className={`${manrope.className} text-prim bg-[#F4F5F7] text-sm md:text-base max-w-[1920px] mx-auto md:flex`}
       >
         <Sidebar/>
         {children}

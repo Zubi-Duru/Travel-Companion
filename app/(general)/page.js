@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BtnMain from "../components/BtnMain";
-import SearchBar from "../components/SearchBar";
+import SearchBarDummy from "../components/SearchBarDummy";
 import Card1 from "../components/Card1";
 import Hero2Card from "../components/Hero2Card";
 import ReviewCard from "../components/ReviewCard";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <div className="md:hidden my-5 mx-6">
-        <SearchBar />
+        <SearchBarDummy />
       </div>
       <section className="flex flex-col gap-10 md:flex-row md:gap-0 items-center mb-14 md:mb-20">
         <div className="text-center md:text-start basis-1/2 relative lg:-mt-14">
@@ -118,8 +118,8 @@ export default function Home() {
           />
         </div>
       </section>
-      <div className="hidden md:flex justify-center mb-14 md:mb-20">
-        <SearchBar />
+      <div className="hidden md:flex justify-center mb-14 md:mb-20 mx-auto md:w-3/5 lg:w-1/2">
+        <SearchBarDummy />
       </div>
       <section className="text-sm mx-4 md:ml-12 lg:ml-20 xl:ml-36 md:flex overflow-hidden items-center mb-14 md:mb-20 gap-5">
         <div className="basis-1/2 w-full">

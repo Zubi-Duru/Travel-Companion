@@ -1,16 +1,11 @@
-"use client";
-import { useState } from "react";
 import BtnMain from "./BtnMain";
-export default function SearchBar({ dummyQuery = "Where are you going to?" }) {
-  const [query, setQuery] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
-
+export default function SearchBarDummy({ dummyQuery = "Where are you going to?" }) {
   return (
     <div
       style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)" }}
-      className="px-2 py-1 md:py-2 rounded-[50px] w-full flex items-center justify-center h-12 md:h-14 relative"
+      className="px-2 py-1 md:py-2 rounded-[50px] w-full flex items-center justify-center gap-3 "
     >
-      <div className="md:-ml-4 pr-4">
+      <div className="ml-2 md:ml-5">
         <svg
           width="24"
           height="24"
@@ -34,23 +29,8 @@ export default function SearchBar({ dummyQuery = "Where are you going to?" }) {
           />
         </svg>
       </div>
-      <input
-        value={query}
-        onInput={(e) => {
-          setQuery(e.target.value)
-          if(e.target.value){
-            setShowSearch(true)
-          }
-        }}
-        onBlur={(e)=>{
-          if(!e.target.value){
-            setShowSearch(false)
-          }
-        }}
-        placeholder={dummyQuery}
-        className="w-5/6 focus:outline-none bg-transparent"
-      />
-      {showSearch && <div className="absolute right-2"><BtnMain url="/dashboard">Search</BtnMain></div>}
+      <input placeholder={dummyQuery} className="w-5/6 focus:outline-none bg-transparent" />
+      <BtnMain url="/auth">Search</BtnMain>
     </div>
   );
 }
