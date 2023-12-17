@@ -23,8 +23,8 @@ export default function SidebarMobile() {
 
 
   return (
-    <>
-      <nav className="flex items-center justify-between px-4 py-2 h-16">
+    <div className="relative">
+      <nav className="flex items-center justify-between px-4 py-10 h-16">
         <div
           onClick={(e) => {
             setSidebarIsOpen(true);
@@ -82,7 +82,7 @@ export default function SidebarMobile() {
       <nav
         className={`${
           SidebarIsOpen
-            ? "flex bg-white w-[45%] relative z-20 h-screen flex-col text-base -mt-16"
+            ? "flex bg-white w-[45%] fixed z-20 h-screen flex-col text-base top-0"
             : "hidden"
         }`}
       >
@@ -375,6 +375,6 @@ export default function SidebarMobile() {
           </Link>
         </div>
       </nav>
-    </>
+    </div>
   );
 }

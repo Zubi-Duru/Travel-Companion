@@ -1,4 +1,5 @@
 import SearchBar from "@/app/components/SearchBar";
+import UserList from "@/app/components/UserList";
 import Image from "next/image";
 
 //API getUsers
@@ -11,13 +12,13 @@ let name = "Patrick";
 export default function Dashboard() {
   return (
     <main className="w-full">
-      <div className="hidden md:flex justify-between items-center my-4 px-5">
-        <div className="pr-10 w-1/3">
-          <h1 className="text-3xl font-bold mb-1"> Hello {name}!</h1>
-          <p className="text-sm ">Welcome back and explore new trips</p>
+      <div className="hidden md:flex justify-between items-center my-4 px-6">
+        <div className="pr-3 lg:pr-10 w-1/3">
+          <h1 className="text-xl lg:text-3xl font-bold mb-1"> Hello {name}!</h1>
+          <p className="text-sm hidden lg:inline-block">Welcome back and explore new trips</p>
         </div>
 
-        <div className="pr-4 w-4/6">
+        <div className="pr-4 w-full lg:w-4/6">
           <SearchBar />
         </div>
 
@@ -44,17 +45,17 @@ export default function Dashboard() {
       </div>
       <div className="md:hidden">
       <div>
-      <hr className="mt-2"/>
+      <hr className=""/>
       <div className="font-extrabold text-xl my-3 pl-5">Home</div>
       <hr/>
       </div>
-      <div className="px-4  my-8">
+      <div className="px-4 my-8">
         <SearchBar/>
       </div>
       </div>
-      <div>
-        <div></div>
-        <div></div>
+      <div className="flex flex-col md:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-6">
+        <div><UserList/></div>
+      <div>hi</div>
       </div>
     </main>
   );

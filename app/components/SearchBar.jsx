@@ -10,7 +10,7 @@ export default function SearchBar({ dummyQuery = "Where are you going to?" }) {
       style={{ boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)" }}
       className="px-2 py-1 md:py-2 rounded-[50px] w-full flex items-center justify-center h-12 md:h-14 relative"
     >
-      <div className="md:-ml-4 pr-4">
+      <div className="lg:-ml-4 pr-4">
         <svg
           width="24"
           height="24"
