@@ -10,7 +10,7 @@ function Bullet() {
 export default function SidebarLg() {
   const segment = useSelectedLayoutSegment();
   return (
-    <nav className="bg-white w-[220px] h-screen flex flex-col text-base">
+    <nav className="bg-white w-[220px] h-full flex flex-col text-base">
       <div className="scale-[1.3] mt-10 mb-20 mx-auto">
         <Logo icon={true} />
       </div>
@@ -222,7 +222,7 @@ export default function SidebarLg() {
           </Link>
         </li>
       </ul>
-      <div className="mt-auto mb-20 w-fit pl-[2.875rem] lg:pl-[3.375rem]">
+      <div className="mt-auto mb-40 w-fit pl-[2.875rem] lg:pl-[3.375rem]">
         <Link href={"/dashboard"}>
           <div className="flex gap-2">
             <svg

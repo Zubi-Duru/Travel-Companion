@@ -69,9 +69,9 @@ export default function SidebarMobile() {
               
             />
           </div>
-          <div className="w-10 h-10 rounded-full overflow-hidden ">
+          <div className="w-10 h-10 rounded-full overflow-hidden">
             <Image
-              className="w-full h-full rounded-full"
+              className="!w-full !h-full rounded-full"
               src={`${dp}`}
               width="2500"
               height="2500"

@@ -4,7 +4,7 @@ export default function Sidebar() {
   return (
     <>
       <div className="hidden md:block relative">
-        <div className="fixed">
+        <div className="fixed h-[112vh]">
           <SidebarLg />
         </div>
       </div>

@@ -20,10 +20,10 @@ export default function Dashboard() {
   const [geoCode, setGeoCode] = useState();
 
   return (
-    <main className="w-full">
+    <main className="w-full ">
       <div className="hidden md:flex justify-between items-center my-4 py-4 md:px-10 md:mb-12">
-        <div className="pr-3 lg:pr-10 w-1/3">
-          <h1 className="text-xl lg:text-4xl font-bold mb-1"> Hello {name}!</h1>
+        <div className="pr-3 w-1/3 xl:w-2/5">
+          <h1 className="text-xl lg:text-2xl xl:text-4xl font-bold mb-1"> Hello {name}!</h1>
           <p className="text-sm hidden lg:inline-block">
             Welcome back and explore new trips
           </p>
@@ -54,7 +54,7 @@ export default function Dashboard() {
           <hr />
         </div>
         <div className="px-4 my-8">
-          <SearchBar setGeoCode={setGeoCode} />
+          <SearchBar country={selectedOption} />
         </div>
       </div>
 
