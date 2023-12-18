@@ -16,7 +16,7 @@ const customStyles = {
   }),
   menu: (provided, state) => ({
     ...provided,
-    left: "-10px",
+    left: "-75px",
     width: "min-content",
     borderRadius: "10px",
   }),
