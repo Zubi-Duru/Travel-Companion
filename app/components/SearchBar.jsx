@@ -30,7 +30,6 @@ export default function SearchBar({
   dummyQuery = "Where are you going to?",
   country = { value: "ng", label: "Nigeria" },
 }) {
-  const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [selectedDestinationOption, setSelectedDestinationOption] = useState(
     []
@@ -72,33 +71,6 @@ export default function SearchBar({
     }
   };
 
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   const fetchData = async () => {
-  //     try {
-  //       if (
-  //         formFilled &&
-  //         selectedDestinationCityOption &&
-  //         selectedHomeCityOption
-  //       ) {
-  //         const destinationData = await getGeoLocation("Westbury, UK");
-  //         const homeData = await getGeoLocation(selectedHomeCityOption.value);
-  //         console.log(homeData);
-  //         if (isMounted) {
-  //           setDestinationGeoLocation(destinationData);
-  //           setHomeGeoLocation(homeData);
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, [selectedDestinationOption]);
 
   return (
     <div

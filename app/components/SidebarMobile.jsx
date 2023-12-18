@@ -22,7 +22,6 @@ export default function SidebarMobile() {
   const [ selectedOption, setSelectedOption] =
     useState(destinationCountry);
 
-
   return (
     <div className="relative">
       <nav className="flex items-center justify-between px-4 py-10 h-16">
@@ -60,15 +59,14 @@ export default function SidebarMobile() {
         </div>
         <Logo />
         <div className="flex  items-center">
-          {/* p-[0.2rem] bg-white rounded-full */}
-          <div className="">
+     
+          {/* <div className="">
             <Flagdropdown
               getSelectedOption={{
                 selectedOption, setSelectedOption
               }}
-              
             />
-          </div>
+          </div> */}
           <div className="w-10 h-10 rounded-full overflow-hidden">
             <Image
               className="!w-full !h-full rounded-full"
