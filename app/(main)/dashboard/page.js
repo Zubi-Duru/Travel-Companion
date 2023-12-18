@@ -50,7 +50,16 @@ export default function Dashboard() {
       <div className="md:hidden">
         <div>
           <hr className="" />
+          <div className="flex justify-between">
           <div className="font-extrabold text-xl my-3 pl-5">Home</div>
+          <div className="inline-block">
+            <Flagdropdown
+              getSelectedOption={{
+                selectedOption, setSelectedOption
+              }}
+            />
+          </div>
+          </div>
           <hr />
         </div>
         <div className="px-4 my-8">
