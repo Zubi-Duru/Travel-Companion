@@ -4,12 +4,13 @@ import Logo from "./Logo";
 import Image from "next/image";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
+import Flagdropdown from "./Flagdropdown";
 
 //API getUsers
-// 1. get destination country for the flag 
+// 1. get destination country for the flag
 // 2. get dp
-let destinationCountry="NG"
-let dp="/assets/dp.png"
+let destinationCountry =    { value: "ng", label: "Nigeria" };
+let dp = "/assets/dp.png";
 
 function Bullet() {
   return <div className="w-1.5 h-12 rounded-sm bg-tert"></div>;
@@ -18,8 +19,8 @@ function Bullet() {
 export default function SidebarMobile() {
   const segment = useSelectedLayoutSegment();
   const [SidebarIsOpen, setSidebarIsOpen] = useState(false);
-
-
+  const [ selectedOption, setSelectedOption] =
+    useState(destinationCountry);
 
 
   return (
@@ -58,16 +59,15 @@ export default function SidebarMobile() {
           </svg>
         </div>
         <Logo />
-        <div className="flex gap-1.5 items-center">
-          <div className="p-[0.2rem] bg-white rounded-full">
-            <div className="w-8 h-8 rounded-full overflow-hidden flex items-center ">
-              <Image
-                className="w-16 h-16 rounded-full scale-[1.05]"
-                src={`https://flagsapi.com/${destinationCountry}/flat/64.png`}
-                width="150"
-                height="150"
-              />
-            </div>
+        <div className="flex  items-center">
+          {/* p-[0.2rem] bg-white rounded-full */}
+          <div className="">
+            <Flagdropdown
+              getSelectedOption={{
+                selectedOption, setSelectedOption
+              }}
+              
+            />
           </div>
           <div className="w-10 h-10 rounded-full overflow-hidden ">
             <Image
@@ -86,35 +86,41 @@ export default function SidebarMobile() {
             : "hidden"
         }`}
       >
-        <div className="flex pl-7 pr-4 my-4 items-center justify-between"><div className="font-extrabold text-xl text-black ">Menu</div>
-        <div
-          onClick={(e) => {
-            setSidebarIsOpen(false);
-          }}
-        >
-          <svg className=""
-            width="33"
-            height="32"
-            viewBox="0 0 24 23"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="flex pl-7 pr-4 my-4 items-center justify-between">
+          <div className="font-extrabold text-xl text-black ">Menu</div>
+          <div
+            onClick={(e) => {
+              setSidebarIsOpen(false);
+            }}
           >
-            <path
-              d="M15.7128 15.8958L7.22748 8.16611C6.93757 7.90201 6.93757 7.464 7.22748 7.1999C7.5174 6.9358 7.99823 6.9358 8.28814 7.1999L16.7734 14.9296C17.0633 15.1937 17.0633 15.6317 16.7734 15.8958C16.4835 16.1599 16.0027 16.1599 15.7128 15.8958Z"
-              fill="#979797"
-            />
-            <path
-              d="M7.22658 15.8958C6.93666 15.6317 6.93666 15.1937 7.22658 14.9296L15.7119 7.1999C16.0018 6.9358 16.4826 6.9358 16.7725 7.1999C17.0624 7.464 17.0624 7.90201 16.7725 8.16611L8.28724 15.8958C7.99732 16.1599 7.51649 16.1599 7.22658 15.8958Z"
-              fill="#979797"
-            />
-          </svg>
-        </div></div>
-        
+            <svg
+              className=""
+              width="33"
+              height="32"
+              viewBox="0 0 24 23"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.7128 15.8958L7.22748 8.16611C6.93757 7.90201 6.93757 7.464 7.22748 7.1999C7.5174 6.9358 7.99823 6.9358 8.28814 7.1999L16.7734 14.9296C17.0633 15.1937 17.0633 15.6317 16.7734 15.8958C16.4835 16.1599 16.0027 16.1599 15.7128 15.8958Z"
+                fill="#979797"
+              />
+              <path
+                d="M7.22658 15.8958C6.93666 15.6317 6.93666 15.1937 7.22658 14.9296L15.7119 7.1999C16.0018 6.9358 16.4826 6.9358 16.7725 7.1999C17.0624 7.464 17.0624 7.90201 16.7725 8.16611L8.28724 15.8958C7.99732 16.1599 7.51649 16.1599 7.22658 15.8958Z"
+                fill="#979797"
+              />
+            </svg>
+          </div>
+        </div>
+
         <ul className="flex flex-col h-full items-start ">
-          <li className="w-full"  onClick={(e) => {
-            setSidebarIsOpen(false);
-          }}>
-            <Link href={"/dashboard"} >
+          <li
+            className="w-full"
+            onClick={(e) => {
+              setSidebarIsOpen(false);
+            }}
+          >
+            <Link href={"/dashboard"}>
               <div
                 className={`${
                   segment == "dashboard" ? "bg-[#FFF2EB]" : "bg-transparent"
@@ -170,9 +176,12 @@ export default function SidebarMobile() {
               </div>
             </Link>
           </li>
-          <li className="w-full"  onClick={(e) => {
-            setSidebarIsOpen(false);
-          }}>
+          <li
+            className="w-full"
+            onClick={(e) => {
+              setSidebarIsOpen(false);
+            }}
+          >
             <Link href={"/chat"}>
               <div
                 className={`${
@@ -223,9 +232,12 @@ export default function SidebarMobile() {
               </div>
             </Link>
           </li>
-          <li className="w-full"  onClick={(e) => {
-            setSidebarIsOpen(false);
-          }}>
+          <li
+            className="w-full"
+            onClick={(e) => {
+              setSidebarIsOpen(false);
+            }}
+          >
             <Link href={"/notification"}>
               <div
                 className={`${
@@ -274,9 +286,12 @@ export default function SidebarMobile() {
               </div>
             </Link>
           </li>
-          <li className="w-full"  onClick={(e) => {
-            setSidebarIsOpen(false);
-          }}>
+          <li
+            className="w-full"
+            onClick={(e) => {
+              setSidebarIsOpen(false);
+            }}
+          >
             <Link href={"/setting"}>
               <div
                 className={`${

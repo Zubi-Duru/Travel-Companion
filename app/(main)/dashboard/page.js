@@ -1,16 +1,24 @@
+"use client";
+import Flagdropdown from "@/app/components/Flagdropdown";
 import HotSpotsCard from "@/app/components/HotSpotsCard";
 import SearchBar from "@/app/components/SearchBar";
 import UserList from "@/app/components/UserList";
 import Image from "next/image";
+import { useState } from "react";
 
 //API getUsers
 // 1. get destination country for the flag
 // 2. get dp
-let destinationCountry = "NG";
+let destinationCountry =    { value: "ng", label: "Nigeria" };
 let dp = "/assets/dp.png";
 let name = "Patrick";
 
 export default function Dashboard() {
+  const [ selectedOption, setSelectedOption] =
+    useState(destinationCountry);
+
+  const [geoCode, setGeoCode] = useState();
+
   return (
     <main className="w-full">
       <div className="hidden md:flex justify-between items-center my-4 py-4 md:px-10 md:mb-12">
@@ -21,20 +29,13 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="pr-4 w-full lg:w-4/6">
-          <SearchBar />
+        <div className="pr-8 w-full lg:w-4/6">
+          <SearchBar country={selectedOption}/>
         </div>
 
-        <div className="flex gap-4 items-center">
-          <div className="p-[0.2rem] bg-white rounded-full">
-            <div className="w-12 h-12 rounded-full overflow-hidden flex items-center ">
-              <Image
-                className="w-16 h-16 rounded-full scale-[1.05]"
-                src={`https://flagsapi.com/${destinationCountry}/flat/64.png`}
-                width="150"
-                height="150"
-              />
-            </div>
+        <div className="flex items-center">
+          <div className="">
+            <Flagdropdown size={12} getSelectedOption={{selectedOption, setSelectedOption}} />
           </div>
           <div className="w-14 h-14 rounded-full overflow-hidden ">
             <Image
@@ -53,7 +54,7 @@ export default function Dashboard() {
           <hr />
         </div>
         <div className="px-4 my-8">
-          <SearchBar />
+          <SearchBar setGeoCode={setGeoCode} />
         </div>
       </div>
 
@@ -62,7 +63,9 @@ export default function Dashboard() {
           <div>
             <UserList />
           </div>
-          <div className="mb-10"><HotSpotsCard/></div>
+          <div className="mb-10">
+            <HotSpotsCard />
+          </div>
         </div>
         <div className="basis-1/2">hi</div>
       </div>

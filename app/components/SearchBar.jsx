@@ -1,9 +1,104 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AsyncSelect from "react-select/async";
 import BtnMain from "./BtnMain";
-export default function SearchBar({ dummyQuery = "Where are you going to?" }) {
+
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    display: "flex",
+  }),
+  control: (provided) => ({
+    // none of react-select's styles are passed to <Control />
+    width: "83.333333%", // Equivalent to w-5/6
+    height: "100%", // Equivalent to h-full
+    backgroundColor: "transparent", // Equivalent to bg-transparent
+    outline: "none",
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = "opacity 300ms";
+
+    return { ...provided, opacity, transition };
+  },
+  indicatorsContainer: () => ({
+    display: "none",
+  }),
+};
+
+export default function SearchBar({
+  dummyQuery = "Where are you going to?",
+  country = { value: "ng", label: "Nigeria" },
+}) {
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [selectedDestinationOption, setSelectedDestinationOption] = useState(
+    []
+  );
+
+  const loadOptions = async (inputValue, callback) => {
+    if (selectedDestinationOption && inputValue) {
+      try {
+        const response = await fetch(
+          `api/places?input=${inputValue}&country=${country.value}`
+        );
+        const data = await response.json();
+        console.log(data);
+
+        let places = [];
+        data?.data?.predictions?.map((place, i) => {
+          console.log(place);
+          places = [
+            ...places,
+            { value: place.description, label: place.description },
+          ];
+        });
+
+        callback(places);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  const getGeoLocation = async (address) => {
+    try {
+      const response = await fetch(`api/geoLocate?address=${address}`);
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   const fetchData = async () => {
+  //     try {
+  //       if (
+  //         formFilled &&
+  //         selectedDestinationCityOption &&
+  //         selectedHomeCityOption
+  //       ) {
+  //         const destinationData = await getGeoLocation("Westbury, UK");
+  //         const homeData = await getGeoLocation(selectedHomeCityOption.value);
+  //         console.log(homeData);
+  //         if (isMounted) {
+  //           setDestinationGeoLocation(destinationData);
+  //           setHomeGeoLocation(homeData);
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, [selectedDestinationOption]);
 
   return (
     <div
@@ -34,23 +129,31 @@ export default function SearchBar({ dummyQuery = "Where are you going to?" }) {
           />
         </svg>
       </div>
-      <input
-        value={query}
-        onInput={(e) => {
-          setQuery(e.target.value)
-          if(e.target.value){
-            setShowSearch(true)
-          }
-        }}
-        onBlur={(e)=>{
-          if(!e.target.value){
-            setShowSearch(false)
-          }
-        }}
-        placeholder={dummyQuery}
-        className="w-5/6 focus:outline-none bg-transparent"
-      />
-      {showSearch && <div className="absolute right-2"><BtnMain url="/dashboard">Search</BtnMain></div>}
+      <div className="w-5/6">
+        <AsyncSelect
+          className="w-5/6 focus:outline-none h-full bg-transparent"
+          defaultValue={selectedDestinationOption}
+          onChange={setSelectedDestinationOption}
+          onInputChange={(e) => {
+            setShowSearch(true);
+          }}
+          loadOptions={loadOptions}
+          placeholder={dummyQuery}
+          styles={customStyles}
+        />
+      </div>
+      {showSearch && (
+        <div
+          className="absolute right-2 z-100"
+          onClick={async(e) => {
+            setShowSearch(false);
+            const location=await getGeoLocation(selectedDestinationOption.value + country.value)
+            console.log(selectedDestinationOption,location);
+          }}
+        >
+          <BtnMain url="/dashboard">Search</BtnMain>
+        </div>
+      )}
     </div>
   );
 }

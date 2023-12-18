@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Image from "next/image";
 let hotspots = [
   {
@@ -17,6 +17,9 @@ let hotspots = [
 ];
 export default function HotSpotsCard() {
   const [list, setList] = useState(2);
+  useEffect(()=>{
+
+  })
   return (
     <div className="rounded-2xl px-1.5 md:px-5 bg-white w-full  ">
       <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 bg-white">
@@ -28,7 +31,7 @@ export default function HotSpotsCard() {
             return (
               <div
                 className="w-[48%] space-y-3 md:space-y-4 shadow-md p-2.5 rounded-xl mb-4"
-                key={spot.name}
+                key={i}
               >
                 <div>
                   <Image
@@ -81,7 +84,7 @@ export default function HotSpotsCard() {
                       <path
                         d="M3.31592 15.1647C3.31592 12.616 6.10835 10.5547 9.54632 10.5547C10.2426 10.5547 10.9172 10.6403 11.5482 10.7984"
                         stroke="#292D32"
-                        strokeMidth="0.987868"
+                        strokeWidth="0.987868"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
@@ -96,7 +99,7 @@ export default function HotSpotsCard() {
                       <path
                         d="M12.7671 12.5302L13.4851 13.1821L15.03 11.8848"
                         stroke="#292D32"
-                        strokeMidth="0.987868"
+                        strokeWidth="0.987868"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
@@ -126,3 +129,5 @@ export default function HotSpotsCard() {
     </div>
   );
 }
+
+
