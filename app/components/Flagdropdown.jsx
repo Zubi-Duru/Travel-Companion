@@ -40,7 +40,7 @@ const customStyles = {
   }),
 };
 export default function Flagdropdown({
-  size = 5,
+  size = "10",
   getSelectedOption= {
       selectedOption: defaultSelectedOption,
       setSelectedOption: setDefaultSelectedOption,

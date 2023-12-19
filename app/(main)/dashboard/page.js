@@ -67,7 +67,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
+      <div className="flex flex-col lg:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
         <div className="space-y-10 basis-1/2">
           <div>
             <UserList />
@@ -76,7 +76,7 @@ export default function Dashboard() {
             <HotSpotsCard />
           </div>
         </div>
-        <div className="basis-1/2">hi</div>
+        <div className="basis-1/2">hi 2</div>
       </div>
     </main>
   );
