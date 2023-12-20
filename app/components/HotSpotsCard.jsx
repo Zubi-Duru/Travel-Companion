@@ -22,6 +22,7 @@ export default function HotSpotsCard({ location,setLocation }) {
       return data.data.results
     } catch (error) {
       console.error(error);
+      return []
     }
   }
 
@@ -33,6 +34,7 @@ export default function HotSpotsCard({ location,setLocation }) {
       return data.data;
     } catch (error) {
       console.error(error);
+      return []
     }
   };
 
@@ -89,7 +91,7 @@ export default function HotSpotsCard({ location,setLocation }) {
                             fill="#FFD910"
                           />
                         </svg>
-                        <span className="ml-1 text-sm">4.9</span>
+                        <span className="ml-1 text-sm">{spot.rating}</span>
                       </div>
                       <div className="flex items-center">
                         <svg
@@ -129,7 +131,7 @@ export default function HotSpotsCard({ location,setLocation }) {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <span className="ml-1 text-sm">(1,200)</span>
+                        <span className="ml-1 text-sm">({spot.user_ratings_total})</span>
                       </div>
                     </div>
                   </div>
@@ -137,7 +139,7 @@ export default function HotSpotsCard({ location,setLocation }) {
               }
             } catch (error) {
               console.error("Error fetching image:", error);
-              return null;
+              return [];
             }
           })
         );
@@ -145,7 +147,7 @@ export default function HotSpotsCard({ location,setLocation }) {
         setRenderedSpots(spotComponents);
       } catch (error) {
         console.error("Error fetching hotspots:", error);
-        // Handle the error
+        return null
       }
     };
 

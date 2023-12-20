@@ -11,10 +11,10 @@ export default function SidebarLg() {
   const segment = useSelectedLayoutSegment();
   return (
     <nav className="bg-white w-[220px] h-full flex flex-col text-base">
-      <div className="scale-[1.3] mt-10 mb-20 mx-auto">
+      <div className="scale-[1.3] mt-10 mb-10 mx-auto">
         <Logo icon={true} />
       </div>
-      <ul className="flex flex-col h-full gap-8 items-start pl-5">
+      <ul className="flex flex-col mb-10 gap-5 items-start pl-5">
         <li className="w-full">
           <Link href={"/dashboard"}>
             <div className="flex items-center gap-5 lg:gap-7">
@@ -222,7 +222,132 @@ export default function SidebarLg() {
           </Link>
         </li>
       </ul>
-      <div className="mt-auto mb-40 w-fit pl-[2.875rem] lg:pl-[3.375rem]">
+      <div className="mx-4 border-2 border-[#F4F5F7] shadow-md rounded-lg mb-10">
+        <div className="flex  px-1 py-2">
+          <svg className="mr-3"
+            width="34"
+            height="41"
+            viewBox="0 0 34 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.5"
+              d="M16.6244 39.7886C16.6244 40.2346 16.9861 40.5963 17.4321 40.5963C17.8782 40.5963 18.2398 40.2346 18.2398 39.7886L16.6244 39.7886ZM16.6244 18.7886L16.6244 39.7886L18.2398 39.7886L18.2398 18.7886L16.6244 18.7886Z"
+              fill="#37374E"
+            />
+            <g filter="url(#filter0_d_710_1651)">
+              <circle cx="16.9321" cy="15.7114" r="9.5" fill="#FA8443" />
+            </g>
+            <circle cx="16.9321" cy="15.5" r="4.5" fill="white" />
+            <defs>
+              <filter
+                id="filter0_d_710_1651"
+                x="0.432129"
+                y="0.211426"
+                width="33"
+                height="33"
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feMorphology
+                  radius="1"
+                  operator="dilate"
+                  in="SourceAlpha"
+                  result="effect1_dropShadow_710_1651"
+                />
+                <feOffset dy="1" />
+                <feGaussianBlur stdDeviation="3" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_710_1651"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_710_1651"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+          <div className="space-y-1.5">
+            <span className="w-full block">Current Location</span>
+            <span className="w-full block font-semibold">Nigeria</span>
+          </div>
+        </div>
+        <div className="flex bg-[#F4F5F7] px-1 py-2">
+          <svg className="mr-3"
+            width="35"
+            height="38"
+            viewBox="0 0 35 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_711_1665)">
+              <path
+                d="M25.8672 15.45C24.8172 10.83 20.7872 8.75 17.2472 8.75C17.2472 8.75 17.2472 8.75 17.2372 8.75C13.7072 8.75 9.66717 10.82 8.61717 15.44C7.44717 20.6 10.6072 24.97 13.4672 27.72C14.5272 28.74 15.8872 29.25 17.2472 29.25C18.6072 29.25 19.9672 28.74 21.0172 27.72C23.8772 24.97 27.0372 20.61 25.8672 15.45ZM17.2472 20.46C15.5072 20.46 14.0972 19.05 14.0972 17.31C14.0972 15.57 15.5072 14.16 17.2472 14.16C18.9872 14.16 20.3972 15.57 20.3972 17.31C20.3972 19.05 18.9872 20.46 17.2472 20.46Z"
+                fill="#FA8443"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_711_1665"
+                x="0.367188"
+                y="0.75"
+                width="33.75"
+                height="36.5"
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset />
+                <feGaussianBlur stdDeviation="4" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_711_1665"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_711_1665"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+          <div className="space-y-1.5">
+            <span className="w-full block">Destination</span>
+            <span className="w-full block font-semibold">South Africa</span>
+          </div>
+        </div>
+      </div>
+      <div className="mt-auto md:mb-48 lg:mb-32 w-fit pl-[2.875rem] lg:pl-[3.375rem]">
         <Link href={"/dashboard"}>
           <div className="flex gap-2">
             <svg
