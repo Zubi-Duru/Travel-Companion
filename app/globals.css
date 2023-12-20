@@ -21,3 +21,9 @@ body {
 ::-webkit-scrollbar {
   width: 0px;
 }
+.css-tj5bde-Svg {
+  stroke: #fa8443 !important;
+  fill: #fa8443 !important;
+  stroke-width: 1 !important;
+  cursor: pointer!important;
+}

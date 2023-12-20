@@ -66,7 +66,7 @@ export default function UserList({title="People Going to ..."}) {
     const [list,setList]=useState(4)
   return (
     <div className="px-1.5 rounded-2xl md:px-5 bg-white ">
-      <h2 className="text-2xl lg:text-xl xl:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
+      <h2 className="text-xl lg:text-xl xl:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
         {title}
       </h2>
       <div className="space-y-4 ">

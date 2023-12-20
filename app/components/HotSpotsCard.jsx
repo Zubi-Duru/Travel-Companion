@@ -154,7 +154,7 @@ export default function HotSpotsCard({ location,setLocation }) {
 
   return (
     <div className="rounded-2xl p-0 md:px-5 bg-white w-full">
-      <h2 className="text-2xl md:text-3xl  lg:text-xl xl:text-3xl font-medium p-3 md:p-4 bg-white">
+      <h2 className="text-xl md:text-3xl  lg:text-xl xl:text-3xl font-medium p-3 md:p-4 bg-white">
         Popular Destinations
       </h2>
       <div className="hidden md:flex w-full justify-between flex-wrap md:gap-4 lg:gap-2 xl:gap-4 ">

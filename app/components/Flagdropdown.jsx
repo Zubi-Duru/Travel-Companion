@@ -42,6 +42,7 @@ const customStyles = {
   indicatorsContainer: (provided, state) => ({
     ...provided,
     margin: "auto",
+    stroke:"red"
   }),
 };
 export default function Flagdropdown({

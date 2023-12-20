@@ -93,7 +93,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="basis-1/2 relative px-4 md:px-0">
-          <div className="sticky -top-[250px] h-fit overflow-scroll">
+          <div className="sticky -top-[250px] h-fit overflow-scroll pb-10">
             <h2 className="flex text-xl md:text-3xl font-medium p-2.5 md:p-4 bg-white rounded-t-xl">
               <img className="mr-2" src="/assets/mappin.svg" />
               {`Places in ${location.place.value.split(",")[0]}`}
@@ -102,7 +102,7 @@ export default function Dashboard() {
               <Map geoCode={location.geoCode} />
             </div>
 
-            <div className="mt-10 relative pb-10">
+            <div className="mt-10 relative">
               <Image
                 className="w-full h-full"
                 src="/assets/dashimage.png"
