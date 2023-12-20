@@ -1,6 +1,8 @@
 "use client";
+import BtnMain from "@/app/components/BtnMain";
 import Flagdropdown from "@/app/components/Flagdropdown";
 import HotSpotsCard from "@/app/components/HotSpotsCard";
+import Map from "@/app/components/Map";
 import SearchBar from "@/app/components/SearchBar";
 import UserList from "@/app/components/UserList";
 import Image from "next/image";
@@ -82,15 +84,42 @@ export default function Dashboard() {
 
       <div className="flex flex-col lg:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
         <div className="space-y-10 basis-1/2">
-          <div>
+          <div className="">
             {console.log("hi", location.place.value.split(",")[0])}
-            <UserList title={`People Going to ${location.place.value.split(",")[0]}`} />
+            <UserList
+              title={`People Going to ${location.place.value.split(",")[0]}`}
+            />
           </div>
-          <div className="mb-10">
+          <div className="pb-10">
             <HotSpotsCard location={location} setLocation={setLocation} />
           </div>
         </div>
-        <div className="basis-1/2">hi 2</div>
+        <div className="basis-1/2 relative">
+          <div className="sticky -top-[250px] h-fit overflow-scroll">
+            <h2 className="flex text-xl md:text-3xl font-medium p-2.5 md:p-4 bg-white rounded-t-xl">
+              <img className="mr-2" src="/assets/mappin.svg" />
+              {`Places in ${location.place.value.split(",")[0]}`}
+            </h2>
+            <div className="md:h-[90vh] rounded-2xl md:rounded-none">
+              <Map geoCode={location.geoCode} />
+            </div>
+
+            <div className="mt-10 relative pb-10">
+              <Image
+                className="w-full h-full"
+                src="/assets/dashimage.png"
+                width="1000"
+                height="1000"
+              />
+              <div className="absolute top-1/3 text-center w-full">
+                <h3 className="flex lg:text-xl font-bold mx-auto p-1.5 md:p-4 w-fit text-white ">
+                  Guideline to Travelling with Others
+                </h3>
+                <BtnMain>Read Article</BtnMain>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -168,6 +168,18 @@ export default function HotSpotsCard({ location,setLocation }) {
             </button>
           </div>
         )}
+        {hotspots.length<=list && (
+          <div className="bg-white flex justify-center w-full">
+            <button
+              onClick={() => {
+                setList(2);
+              }}
+              className="mb-4 w-full rounded-2xl text-lg bg-white drop-shadow-md py-5 text-tert font-bold"
+            >
+              See Less
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

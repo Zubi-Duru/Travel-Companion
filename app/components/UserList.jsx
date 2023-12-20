@@ -66,7 +66,7 @@ export default function UserList({title="People Going to ..."}) {
     const [list,setList]=useState(4)
   return (
     <div className="px-1.5 rounded-2xl md:px-5 bg-white">
-      <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 bg-white">
+      <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
         {title}
       </h2>
       <div className="space-y-4 ">
@@ -108,6 +108,11 @@ export default function UserList({title="People Going to ..."}) {
             <button onClick={(e)=>{
                 setList((prevList)=>{return prevList + 4})
             }} className="md:-mx-5 w-full rounded-b-2xl text-lg -mt-[60px] bg-white drop-shadow-sm py-5 text-tert font-bold">See More</button>
+        </div>}
+       {users.length<=list && <div className="bg-white flex justify-center">
+            <button onClick={(e)=>{
+                setList(4)
+            }} className="md:-mx-5 w-full rounded-b-2xl text-lg -mt-[60px] bg-white drop-shadow-sm py-5 text-tert font-bold">See Less</button>
         </div>}
       </div>
     </div>
