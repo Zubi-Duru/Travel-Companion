@@ -25,21 +25,34 @@ const customStyles = {
     display: "none",
   }),
 };
+let destinationCountry = { value: "ng", label: "Nigeria" };
+let destination = {
+  country: destinationCountry,
+  place: "",
+  geoCode: { lng: "", lat: "" },
+};
 
 export default function SearchBar({
   dummyQuery = "Where are you going to?",
   country = { value: "ng", label: "Nigeria" },
+  searchCtrl = {
+    location: defaultSelectedOption,
+    setLocation: setDefaultSelectedOption,
+  },
 }) {
+  const [defaultSelectedOption, setDefaultSelectedOption] =
+    useState(destination);
   const [showSearch, setShowSearch] = useState(false);
   const [selectedDestinationOption, setSelectedDestinationOption] = useState(
     []
   );
+  const { location, setLocation } = searchCtrl;
 
   const loadOptions = async (inputValue, callback) => {
     if (selectedDestinationOption && inputValue) {
       try {
         const response = await fetch(
-          `api/places?input=${inputValue}&country=${country.value}`
+          `api/places?input=${inputValue}&country=${location.country.value}`
         );
         const data = await response.json();
         console.log(data);
@@ -70,7 +83,6 @@ export default function SearchBar({
       console.error(error);
     }
   };
-
 
   return (
     <div
@@ -117,10 +129,19 @@ export default function SearchBar({
       {showSearch && (
         <div
           className="absolute right-2 z-100"
-          onClick={async(e) => {
+          onClick={async (e) => {
             setShowSearch(false);
-            const location=await getGeoLocation(selectedDestinationOption.value + country.value)
-            console.log(selectedDestinationOption,location);
+            const geoCode = await getGeoLocation(
+              selectedDestinationOption.value + location.country.value
+            );
+            setLocation((prevLocation) => {
+              return {
+                ...prevLocation,
+                geoCode: geoCode.geoLocation,
+                place: selectedDestinationOption,
+              };
+            });
+            console.log(location, geoCode);
           }}
         >
           <BtnMain url="/dashboard">Search</BtnMain>

@@ -4,7 +4,12 @@ import Select from "react-select";
 import countryDb from "@/public/countryDb";
 import { useState } from "react";
 
-let destinationCountry =    { value: "ng", label: "Nigeria" };
+let destinationCountry = { value: "ng", label: "Nigeria" };
+let destination = {
+  country: destinationCountry,
+  place: "",
+  geoCode: { lng: "", lat: "" },
+};
 const customStyles = {
   option: (provided, state) => ({
     ...provided,
@@ -41,18 +46,16 @@ const customStyles = {
 };
 export default function Flagdropdown({
   size = "10",
-  getSelectedOption= {
-      selectedOption: defaultSelectedOption,
-      setSelectedOption: setDefaultSelectedOption,
-    },
+  getSelectedFlag = {
+    selectedOption: defaultSelectedOption,
+    setSelectedOption: setDefaultSelectedOption,
+  },
 }) {
-    const [
-      defaultSelectedOption,
-      setDefaultSelectedOption,
-    ] = useState(destinationCountry);
+  const [defaultSelectedOption, setDefaultSelectedOption] =
+    useState(destination);
 
-  const { selectedOption, setSelectedOption } = getSelectedOption;
-
+  const { location: selectedOption, setLocation: setSelectedOption } =
+    getSelectedFlag;
   return (
     <div className="flex w-full items-center">
       <div
@@ -60,17 +63,20 @@ export default function Flagdropdown({
       >
         <Image
           className="w-16 h-16 rounded-full scale-[1.2]"
-          src={`https://flagsapi.com/${selectedOption.value.toUpperCase()}/flat/64.png`}
+          src={`https://flagsapi.com/${selectedOption.country.value.toUpperCase()}/flat/64.png`}
           width="150"
           height="150"
         />
       </div>
       <div className="">
         <Select
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
+          defaultValue={selectedOption.country}
+          onChange={(e) => {
+            setSelectedOption({ ...selectedOption, country:e });
+            console.log(selectedOption);
+          }}
           options={countryDb}
-          onBlur={(e)=>{
+          onBlur={(e) => {
             console.log(selectedOption);
           }}
           id="homeCountry"

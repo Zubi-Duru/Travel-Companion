@@ -19,7 +19,7 @@ export default function AuthCard({ type }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log(pathname);
+
   useEffect(() => {
     if (
       (openTab == 1 && username && passwordNew && email) ||
@@ -52,11 +52,9 @@ export default function AuthCard({ type }) {
   const handleAuth = (e) => {
     e.preventDefault();
     if (openTab == 1) {
-      console.log("signup");
       handleSignUp;
     }
     if (openTab == 2) {
-      console.log("login");
       handleLogin;
     }
     router.push("/profile-setup");
