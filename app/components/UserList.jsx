@@ -65,8 +65,8 @@ let users = [
 export default function UserList({title="People Going to ..."}) {
     const [list,setList]=useState(4)
   return (
-    <div className="px-1.5 rounded-2xl md:px-5 bg-white">
-      <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
+    <div className="px-1.5 rounded-2xl md:px-5 bg-white ">
+      <h2 className="text-2xl lg:text-xl xl:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
         {title}
       </h2>
       <div className="space-y-4 ">
@@ -74,7 +74,7 @@ export default function UserList({title="People Going to ..."}) {
           if (i < list) {
             return (
               <div
-                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white drop-shadow-md"}  rounded-xl space-x-1.5 md:space-x-3 px-2 py-4 md:p-4`}
+                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white drop-shadow-md"} rounded-xl space-x-1.5 md:space-x-3 lg:space-x-1 xl:space-x-3 px-2 py-4 md:p-4`}
                 key={user.name}
               >
                 <div className="w-12 md:w-14">
@@ -85,21 +85,23 @@ export default function UserList({title="People Going to ..."}) {
                     height="150"
                   />
                 </div>
-                <div className="w-40 md:w-64">
-                  <p className="text-sm md:text-base font-semibold">
+                <div className="w-40 md:w-64 lg:w-32 xl:w-64">
+                  <p className="text-sm md:text-base lg:text-xs xl:text-base font-semibold">
                     {user.name.slice(0, 25)}
                   </p>
                   <div className="space-x-0.5 md:space-x-1">
-                    <span className="text-xs md:text-sm">{user.age}</span>
+                    <span className="text-xs md:text-sm lg:text-xs xl:text-base">{user.age}</span>
                     <span className="font-black">.</span>
-                    <span className="text-xs md:text-sm">{user.sex}</span>
+                    <span className="text-xs md:text-sm lg:text-xs xl:text-base">{user.sex}</span>
                     <span className="font-black">.</span>
-                    <span className="text-xs md:text-sm">
+                    <span className="text-xs md:text-sm lg:text-xs xl:text-base">
                       {user.city + "," + user.country}
                     </span>
                   </div>
                 </div>
+                <div className="lg:scale-[0.6] xl:scale-100 origin-right">
                 <BtnMain>Connect</BtnMain>
+              </div>
               </div>
             );
           }

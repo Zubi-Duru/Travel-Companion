@@ -36,7 +36,7 @@ export default function Map({ geoCode }) {
 
   return (
     <div
-      className="max-h-[90vh] h-[300px] md:h-full w-full"
+      className="lg:max-h-[90vh] h-[300px] lg:h-full w-full"
       ref={mapRef}
     ></div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import MobileSlider from "./MobileSlider";
 
 
 export default function HotSpotsCard({ location,setLocation }) {
@@ -40,6 +41,9 @@ export default function HotSpotsCard({ location,setLocation }) {
   },[location])
 
   useEffect(() => {
+    if(window.innerWidth<768){
+      setList(20)
+    }
     const fetchSpotImg = async () => {
       try {
        const spots= await getHotspots(location);
@@ -54,12 +58,12 @@ export default function HotSpotsCard({ location,setLocation }) {
                 }
                 return (
                   <div
-                    className="w-[48%] space-y-3 md:space-y-4 shadow-md p-2.5 rounded-xl mb-4"
+                    className="md:w-[48%] space-y-3 md:space-y-4 shadow-md p-2.5 rounded-xl mb-4"
                     key={i}
                   >
-                    <div>
+                    <div className="rounded-xl overflow-hidden">
                       <img
-                        className="w-full h-[150px]"
+                        className="w-full h-[150px] "
                         src={durl}
                         width="150"
                         height="150"
@@ -125,7 +129,6 @@ export default function HotSpotsCard({ location,setLocation }) {
                             strokeLinejoin="round"
                           />
                         </svg>
-
                         <span className="ml-1 text-sm">(1,200)</span>
                       </div>
                     </div>
@@ -150,11 +153,11 @@ export default function HotSpotsCard({ location,setLocation }) {
   }, [location, list]);
 
   return (
-    <div className="rounded-2xl px-1.5 md:px-5 bg-white w-full">
-      <h2 className="text-2xl md:text-3xl font-medium p-1.5 md:p-4 bg-white">
+    <div className="rounded-2xl p-0 md:px-5 bg-white w-full">
+      <h2 className="text-2xl md:text-3xl  lg:text-xl xl:text-3xl font-medium p-3 md:p-4 bg-white">
         Popular Destinations
       </h2>
-      <div className="flex w-full justify-between flex-wrap md:gap-4 ">
+      <div className="hidden md:flex w-full justify-between flex-wrap md:gap-4 lg:gap-2 xl:gap-4 ">
         {renderedSpots}
         {hotspots.length > list && (
           <div className="bg-white flex justify-center w-full">
@@ -181,6 +184,10 @@ export default function HotSpotsCard({ location,setLocation }) {
           </div>
         )}
       </div>
+      <div className="md:hidden"> <MobileSlider ctrl={renderedSpots}>
+        {renderedSpots}
+      </MobileSlider></div>
+     
     </div>
   );
 }

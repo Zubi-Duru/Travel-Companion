@@ -81,26 +81,24 @@ export default function Dashboard() {
           />
         </div>
       </div>
-
-      <div className="flex flex-col lg:flex-row justify-center md:justify-start px-4 md:gap-6 md:px-10">
+      <div className="flex flex-col lg:flex-row justify-center md:justify-start md:gap-6 lg:gap-5 xl:gap-6 md:px-10 lg:px-5 xl:px-10">
         <div className="space-y-10 basis-1/2">
-          <div className="">
-            {console.log("hi", location.place.value.split(",")[0])}
+          <div className="px-4 md:px-0">
             <UserList
               title={`People Going to ${location.place.value.split(",")[0]}`}
             />
           </div>
-          <div className="pb-10">
+          <div className="pb-10 pl-4 md:pl-0 ">
             <HotSpotsCard location={location} setLocation={setLocation} />
           </div>
         </div>
-        <div className="basis-1/2 relative">
+        <div className="basis-1/2 relative px-4 md:px-0">
           <div className="sticky -top-[250px] h-fit overflow-scroll">
             <h2 className="flex text-xl md:text-3xl font-medium p-2.5 md:p-4 bg-white rounded-t-xl">
               <img className="mr-2" src="/assets/mappin.svg" />
               {`Places in ${location.place.value.split(",")[0]}`}
             </h2>
-            <div className="md:h-[90vh] rounded-2xl md:rounded-none">
+            <div className="lg:h-[90vh] rounded-2xl md:rounded-none">
               <Map geoCode={location.geoCode} />
             </div>
 
@@ -111,8 +109,8 @@ export default function Dashboard() {
                 width="1000"
                 height="1000"
               />
-              <div className="absolute top-1/3 text-center w-full">
-                <h3 className="flex lg:text-xl font-bold mx-auto p-1.5 md:p-4 w-fit text-white ">
+              <div className="absolute top-1/4 text-center w-full">
+                <h3 className="flex xl:text-xl font-bold mx-auto p-1.5 md:p-4 w-fit text-white ">
                   Guideline to Travelling with Others
                 </h3>
                 <BtnMain>Read Article</BtnMain>
