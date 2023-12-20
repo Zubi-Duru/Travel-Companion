@@ -69,14 +69,15 @@ export default function UserList({title="People Going to ..."}) {
       <h2 className="text-xl lg:text-xl xl:text-3xl font-medium p-1.5 md:p-4 rounded-2xl bg-white">
         {title}
       </h2>
-      <div className="space-y-4 ">
+      <div className="space-y-4">
         {users.map((user, i) => {
           if (i < list) {
             return (
               <div
-                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white drop-shadow-md"} rounded-xl space-x-1.5 md:space-x-3 lg:space-x-1 xl:space-x-3 px-2 py-4 md:p-4`}
+                className={`flex items-center ${i==list-1? "opacity-80 shadow-inner": "bg-white drop-shadow-md"} rounded-xl justify-between px-2 py-4 md:p-4`}
                 key={user.name}
               >
+                <div className="flex gap-2 items-center">
                 <div className="w-12 md:w-14">
                   <Image
                     className="w-10 md:w-14 h-10 md:h-14 rounded-full "
@@ -99,7 +100,8 @@ export default function UserList({title="People Going to ..."}) {
                     </span>
                   </div>
                 </div>
-                <div className="lg:scale-[0.6] xl:scale-100 origin-right">
+                </div>
+                <div className="lg:scale-[0.6] scale-100 xl:scale-100 origin-right">
                 <BtnMain>Connect</BtnMain>
               </div>
               </div>

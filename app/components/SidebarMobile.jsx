@@ -9,7 +9,7 @@ import Flagdropdown from "./Flagdropdown";
 //API getUsers
 // 1. get destination country for the flag
 // 2. get dp
-let destinationCountry =    { value: "ng", label: "Nigeria" };
+let destinationCountry = { value: "ng", label: "Nigeria" };
 let dp = "/assets/dp.png";
 
 function Bullet() {
@@ -19,8 +19,7 @@ function Bullet() {
 export default function SidebarMobile() {
   const segment = useSelectedLayoutSegment();
   const [SidebarIsOpen, setSidebarIsOpen] = useState(false);
-  const [ selectedOption, setSelectedOption] =
-    useState(destinationCountry);
+  const [selectedOption, setSelectedOption] = useState(destinationCountry);
 
   return (
     <div className="relative">
@@ -59,7 +58,6 @@ export default function SidebarMobile() {
         </div>
         <Logo />
         <div className="flex  items-center">
-     
           {/* <div className="">
             <Flagdropdown
               getSelectedOption={{
@@ -111,7 +109,7 @@ export default function SidebarMobile() {
           </div>
         </div>
 
-        <ul className="flex flex-col h-fit mb-10 items-start ">
+        <ul className="flex flex-col h-fit mb-10 items-start text-sm">
           <li
             className="w-full"
             onClick={(e) => {
@@ -359,158 +357,166 @@ export default function SidebarMobile() {
             </Link>
           </li>
         </ul>
-        <div className="mx-2 border-2 border-[#F4F5F7] shadow-md rounded-lg mb-10">
-        <div className="flex  px-1 py-2">
-          <svg className="mr-1"
-            width="28"
-            height="38"
-            viewBox="0 0 34 41"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.5"
-              d="M16.6244 39.7886C16.6244 40.2346 16.9861 40.5963 17.4321 40.5963C17.8782 40.5963 18.2398 40.2346 18.2398 39.7886L16.6244 39.7886ZM16.6244 18.7886L16.6244 39.7886L18.2398 39.7886L18.2398 18.7886L16.6244 18.7886Z"
-              fill="#37374E"
-            />
-            <g filter="url(#filter0_d_710_1651)">
-              <circle cx="16.9321" cy="15.7114" r="9.5" fill="#FA8443" />
-            </g>
-            <circle cx="16.9321" cy="15.5" r="4.5" fill="white" />
-            <defs>
-              <filter
-                id="filter0_d_710_1651"
-                x="0.432129"
-                y="0.211426"
-                width="33"
-                height="33"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feMorphology
-                  radius="1"
-                  operator="dilate"
-                  in="SourceAlpha"
-                  result="effect1_dropShadow_710_1651"
-                />
-                <feOffset dy="1" />
-                <feGaussianBlur stdDeviation="3" />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_710_1651"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow_710_1651"
-                  result="shape"
-                />
-              </filter>
-            </defs>
-          </svg>
-          <div className="space-y-1.5">
-            <span className="w-full block text-xs">Current Location</span>
-            <span className="w-full block font-semibold text-xs">Nigeria</span>
-          </div>
-        </div>
-        <div className="flex bg-[#F4F5F7] px-1 py-2">
-          <svg className="mr-1"
-            width="28"
-            height="38"
-            viewBox="0 0 35 38"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g filter="url(#filter0_d_711_1665)">
-              <path
-                d="M25.8672 15.45C24.8172 10.83 20.7872 8.75 17.2472 8.75C17.2472 8.75 17.2472 8.75 17.2372 8.75C13.7072 8.75 9.66717 10.82 8.61717 15.44C7.44717 20.6 10.6072 24.97 13.4672 27.72C14.5272 28.74 15.8872 29.25 17.2472 29.25C18.6072 29.25 19.9672 28.74 21.0172 27.72C23.8772 24.97 27.0372 20.61 25.8672 15.45ZM17.2472 20.46C15.5072 20.46 14.0972 19.05 14.0972 17.31C14.0972 15.57 15.5072 14.16 17.2472 14.16C18.9872 14.16 20.3972 15.57 20.3972 17.31C20.3972 19.05 18.9872 20.46 17.2472 20.46Z"
-                fill="#FA8443"
-              />
-            </g>
-            <defs>
-              <filter
-                id="filter0_d_711_1665"
-                x="0.367188"
-                y="0.75"
-                width="33.75"
-                height="36.5"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feOffset />
-                <feGaussianBlur stdDeviation="4" />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_711_1665"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow_711_1665"
-                  result="shape"
-                />
-              </filter>
-            </defs>
-          </svg>
-          <div className="space-y-1.5">
-            <span className="w-full block text-xs">Destination</span>
-            <span className="w-full block font-semibold text-xs">South Africa</span>
-          </div>
-        </div>
-      </div>
-        <div className="mt-auto mb-12 w-fit pl-7">
-          <Link href={"/dashboard"}>
-            <div className="flex gap-2">
+        <div className="mt-auto">
+          <div className="mx-2 border-2 border-[#F4F5F7] shadow-md rounded-lg mb-10">
+            <div className="flex  px-1 py-2">
               <svg
-                className="fill-[#292D32]"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+                className="mr-1"
+                width="28"
+                height="38"
+                viewBox="0 0 34 41"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M15.24 22.27H15.11C10.67 22.27 8.53002 20.52 8.16002 16.6C8.12002 16.19 8.42002 15.82 8.84002 15.78C9.24002 15.74 9.62002 16.05 9.66002 16.46C9.95002 19.6 11.43 20.77 15.12 20.77H15.25C19.32 20.77 20.76 19.33 20.76 15.26V8.73998C20.76 4.66998 19.32 3.22998 15.25 3.22998H15.12C11.41 3.22998 9.93002 4.41998 9.66002 7.61998C9.61002 8.02998 9.26002 8.33998 8.84002 8.29998C8.42002 8.26998 8.12001 7.89998 8.15001 7.48998C8.49001 3.50998 10.64 1.72998 15.11 1.72998H15.24C20.15 1.72998 22.25 3.82998 22.25 8.73998V15.26C22.25 20.17 20.15 22.27 15.24 22.27Z"
-                  fill=""
+                  opacity="0.5"
+                  d="M16.6244 39.7886C16.6244 40.2346 16.9861 40.5963 17.4321 40.5963C17.8782 40.5963 18.2398 40.2346 18.2398 39.7886L16.6244 39.7886ZM16.6244 18.7886L16.6244 39.7886L18.2398 39.7886L18.2398 18.7886L16.6244 18.7886Z"
+                  fill="#37374E"
                 />
-                <path
-                  d="M15.0001 12.75H3.62012C3.21012 12.75 2.87012 12.41 2.87012 12C2.87012 11.59 3.21012 11.25 3.62012 11.25H15.0001C15.4101 11.25 15.7501 11.59 15.7501 12C15.7501 12.41 15.4101 12.75 15.0001 12.75Z"
-                  fill=""
-                />
-                <path
-                  d="M5.84994 16.0998C5.65994 16.0998 5.46994 16.0298 5.31994 15.8798L1.96994 12.5298C1.67994 12.2398 1.67994 11.7598 1.96994 11.4698L5.31994 8.11984C5.60994 7.82984 6.08994 7.82984 6.37994 8.11984C6.66994 8.40984 6.66994 8.88984 6.37994 9.17984L3.55994 11.9998L6.37994 14.8198C6.66994 15.1098 6.66994 15.5898 6.37994 15.8798C6.23994 16.0298 6.03994 16.0998 5.84994 16.0998Z"
-                  fill=""
-                />
+                <g filter="url(#filter0_d_710_1651)">
+                  <circle cx="16.9321" cy="15.7114" r="9.5" fill="#FA8443" />
+                </g>
+                <circle cx="16.9321" cy="15.5" r="4.5" fill="white" />
+                <defs>
+                  <filter
+                    id="filter0_d_710_1651"
+                    x="0.432129"
+                    y="0.211426"
+                    width="33"
+                    height="33"
+                    filterUnits="userSpaceOnUse"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feMorphology
+                      radius="1"
+                      operator="dilate"
+                      in="SourceAlpha"
+                      result="effect1_dropShadow_710_1651"
+                    />
+                    <feOffset dy="1" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_710_1651"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_710_1651"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
               </svg>
-              <span>Logout</span>
+              <div className="space-y-1.5">
+                <span className="w-full block text-xs">Current Location</span>
+                <span className="w-full block font-semibold text-sm">
+                  Nigeria
+                </span>
+              </div>
             </div>
-          </Link>
+            <div className="flex bg-[#F4F5F7] px-1 py-2">
+              <svg
+                className="mr-1"
+                width="28"
+                height="38"
+                viewBox="0 0 35 38"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_d_711_1665)">
+                  <path
+                    d="M25.8672 15.45C24.8172 10.83 20.7872 8.75 17.2472 8.75C17.2472 8.75 17.2472 8.75 17.2372 8.75C13.7072 8.75 9.66717 10.82 8.61717 15.44C7.44717 20.6 10.6072 24.97 13.4672 27.72C14.5272 28.74 15.8872 29.25 17.2472 29.25C18.6072 29.25 19.9672 28.74 21.0172 27.72C23.8772 24.97 27.0372 20.61 25.8672 15.45ZM17.2472 20.46C15.5072 20.46 14.0972 19.05 14.0972 17.31C14.0972 15.57 15.5072 14.16 17.2472 14.16C18.9872 14.16 20.3972 15.57 20.3972 17.31C20.3972 19.05 18.9872 20.46 17.2472 20.46Z"
+                    fill="#FA8443"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d_711_1665"
+                    x="0.367188"
+                    y="0.75"
+                    width="33.75"
+                    height="36.5"
+                    filterUnits="userSpaceOnUse"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feOffset />
+                    <feGaussianBlur stdDeviation="4" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0.215686 0 0 0 0 0.215686 0 0 0 0 0.305882 0 0 0 0.25 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_711_1665"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_711_1665"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+              <div className="space-y-1.5">
+                <span className="w-full block text-xs">Destination</span>
+                <span className="w-full block font-semibold text-sm">
+                  South Africa
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="mt-auto mb-12 w-fit pl-7">
+            <Link href={"/dashboard"}>
+              <div className="flex gap-2">
+                <svg
+                  className="fill-[#292D32]"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.24 22.27H15.11C10.67 22.27 8.53002 20.52 8.16002 16.6C8.12002 16.19 8.42002 15.82 8.84002 15.78C9.24002 15.74 9.62002 16.05 9.66002 16.46C9.95002 19.6 11.43 20.77 15.12 20.77H15.25C19.32 20.77 20.76 19.33 20.76 15.26V8.73998C20.76 4.66998 19.32 3.22998 15.25 3.22998H15.12C11.41 3.22998 9.93002 4.41998 9.66002 7.61998C9.61002 8.02998 9.26002 8.33998 8.84002 8.29998C8.42002 8.26998 8.12001 7.89998 8.15001 7.48998C8.49001 3.50998 10.64 1.72998 15.11 1.72998H15.24C20.15 1.72998 22.25 3.82998 22.25 8.73998V15.26C22.25 20.17 20.15 22.27 15.24 22.27Z"
+                    fill=""
+                  />
+                  <path
+                    d="M15.0001 12.75H3.62012C3.21012 12.75 2.87012 12.41 2.87012 12C2.87012 11.59 3.21012 11.25 3.62012 11.25H15.0001C15.4101 11.25 15.7501 11.59 15.7501 12C15.7501 12.41 15.4101 12.75 15.0001 12.75Z"
+                    fill=""
+                  />
+                  <path
+                    d="M5.84994 16.0998C5.65994 16.0998 5.46994 16.0298 5.31994 15.8798L1.96994 12.5298C1.67994 12.2398 1.67994 11.7598 1.96994 11.4698L5.31994 8.11984C5.60994 7.82984 6.08994 7.82984 6.37994 8.11984C6.66994 8.40984 6.66994 8.88984 6.37994 9.17984L3.55994 11.9998L6.37994 14.8198C6.66994 15.1098 6.66994 15.5898 6.37994 15.8798C6.23994 16.0298 6.03994 16.0998 5.84994 16.0998Z"
+                    fill=""
+                  />
+                </svg>
+                <span>Logout</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </nav>
     </div>

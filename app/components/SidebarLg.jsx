@@ -14,7 +14,7 @@ export default function SidebarLg() {
       <div className="scale-[1.3] mt-10 mb-10 mx-auto">
         <Logo icon={true} />
       </div>
-      <ul className="flex flex-col mb-10 gap-5 items-start pl-5">
+      <ul className="flex flex-col gap-5 items-start pl-5">
         <li className="w-full">
           <Link href={"/dashboard"}>
             <div className="flex items-center gap-5 lg:gap-7">
@@ -222,7 +222,8 @@ export default function SidebarLg() {
           </Link>
         </li>
       </ul>
-      <div className="mx-4 border-2 border-[#F4F5F7] shadow-md rounded-lg mb-10">
+      <div className="mt-auto">
+      <div className="mx-4 border-2 border-[#F4F5F7] shadow-md rounded-lg mt-auto mb-10">
         <div className="flex  px-1 py-2">
           <svg className="mr-3"
             width="34"
@@ -374,6 +375,7 @@ export default function SidebarLg() {
             <span>Logout</span>
           </div>
         </Link>
+      </div>
       </div>
     </nav>
   );
