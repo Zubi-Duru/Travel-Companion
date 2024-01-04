@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import BtnMain from "./BtnMain";
+import BtnMain from "../general/BtnMain";
 import Image from "next/image";
 
 //API fetch related users

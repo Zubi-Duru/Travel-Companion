@@ -1,7 +1,6 @@
 "use client";
 
 import NavLinks from "./NavLinks";
-import Link from "next/link";
 import Logo from "./Logo";
 import BtnSec from "./BtnSec";
 import { useState } from "react";

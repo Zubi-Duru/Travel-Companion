@@ -1,7 +1,7 @@
 import { Manrope } from "next/font/google";
 import "../globals.css";
 import 'dotenv/config'
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/general/Sidebar";
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata = {

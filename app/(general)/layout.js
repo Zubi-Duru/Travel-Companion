@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/general/Navbar";
 import { Manrope } from "next/font/google";
 import "../globals.css";
 import 'dotenv/config'

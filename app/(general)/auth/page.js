@@ -1,6 +1,4 @@
-import Image from "next/image";
-import Navbar from "@/app/components/Navbar";
-import AuthCard from "@/app/components/AuthCard";
+import AuthCard from "@/app/components/auth/AuthCard";
 
 export default function Auth({
   searchParams

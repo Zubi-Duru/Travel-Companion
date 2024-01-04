@@ -1,10 +1,10 @@
 import Image from "next/image";
-import BtnMain from "../components/BtnMain";
-import SearchBarDummy from "../components/SearchBarDummy";
-import Card1 from "../components/Card1";
-import Hero2Card from "../components/Hero2Card";
-import ReviewCard from "../components/ReviewCard";
-import Navbar from "../components/Navbar";
+import BtnMain from "../components/general/BtnMain";
+import SearchBarDummy from "../components/home/SearchBarDummy";
+import Card1 from "../components/home/Card1";
+import Hero2Card from "../components/home/Hero2Card";
+import ReviewCard from "../components/home/ReviewCard";
+import Navbar from "../components/general/Navbar";
 
 export default function Home() {
   return (

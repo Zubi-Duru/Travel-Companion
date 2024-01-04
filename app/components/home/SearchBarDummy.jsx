@@ -1,4 +1,4 @@
-import BtnMain from "./BtnMain";
+import BtnMain from "../general/BtnMain";
 export default function SearchBarDummy({ dummyQuery = "Where are you going to?" }) {
   return (
     <div

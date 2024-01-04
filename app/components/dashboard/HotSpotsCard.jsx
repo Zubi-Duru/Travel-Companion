@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import MobileSlider from "./MobileSlider";
+import MobileSlider from "../general/MobileSlider";
 
 
 export default function HotSpotsCard({ location,setLocation }) {

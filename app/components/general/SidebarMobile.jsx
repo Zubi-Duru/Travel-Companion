@@ -4,7 +4,6 @@ import Logo from "./Logo";
 import Image from "next/image";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
-import Flagdropdown from "./Flagdropdown";
 
 //API getUsers
 // 1. get destination country for the flag

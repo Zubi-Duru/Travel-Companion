@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import AsyncSelect from "react-select/async";
-import BtnMain from "./BtnMain";
+import BtnMain from "../general/BtnMain";
 
 const customStyles = {
   option: (provided, state) => ({

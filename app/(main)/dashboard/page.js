@@ -1,10 +1,10 @@
 "use client";
-import BtnMain from "@/app/components/BtnMain";
-import Flagdropdown from "@/app/components/Flagdropdown";
-import HotSpotsCard from "@/app/components/HotSpotsCard";
-import Map from "@/app/components/Map";
-import SearchBar from "@/app/components/SearchBar";
-import UserList from "@/app/components/UserList";
+import BtnMain from "@/app/components/general/BtnMain";
+import Flagdropdown from "@/app/components/dashboard/Flagdropdown";
+import HotSpotsCard from "@/app/components/dashboard/HotSpotsCard";
+import Map from "@/app/components/dashboard/Map";
+import SearchBar from "@/app/components/dashboard/SearchBar";
+import UserList from "@/app/components/dashboard/UserList";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
