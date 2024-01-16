@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 import {
   Dialog,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../../ui/dialog";
 
 export default function DpModal({
   dp = { url: "/img/user-profile/dp2.png", visibility: true },
@@ -36,7 +36,7 @@ export default function DpModal({
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="absolute bottom-0 left-8 z-30 flex h-36 w-36 items-center justify-center overflow-clip rounded-full bg-gradient-to-tr from-[#E94E1B] to-[#F9B233] ">
+        <div className="absolute bottom-0 left-2 lg:left-8 z-10 flex h-20 md:h-28 lg:h-36 w-20 md:w-28 lg:w-36 items-center justify-center overflow-clip rounded-full bg-gradient-to-tr from-[#E94E1B] to-[#F9B233] ">
           {/* <Image
             className="h-[136px] w-[136px] rounded-full object-cover"
             src={`${selectedImage}`}
@@ -45,7 +45,7 @@ export default function DpModal({
             alt="Profile Photo"
           /> */}
           {isProfileOwner && (
-            <Avatar className="h-[136px] w-[136px] rounded-full object-cover">
+            <Avatar className="h-[75px] md:h-[104px] lg:h-[136px] w-[75px] md:w-[104px] lg:w-[136px] rounded-full object-cover">
               <AvatarImage src={`${selectedImage}`} />
               <AvatarFallback className="text-5xl font-medium">
                 {username.split(" ")[0][0]}

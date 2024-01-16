@@ -34,7 +34,7 @@ export default function CoverSection({
       {isProfileOwner && (
         <div className="absolute bottom-8 right-2 rounded-full bg-white p-1 gap-0">
           <svg
-            className="ml-auto cursor-pointer w-10 h-10 rounded-full"
+            className="ml-auto cursor-pointer w-6 md:w-10 h-6 md:h-10 rounded-full"
             width="35"
             height="35"
             viewBox="0 0 35 35"

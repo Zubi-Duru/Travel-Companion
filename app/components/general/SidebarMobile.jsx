@@ -22,7 +22,7 @@ export default function SidebarMobile() {
 
   return (
     <div className="relative">
-      <nav className="flex items-center justify-between px-4 py-10 h-16">
+      <nav className="flex items-center justify-between px-4 py-8 h-14">
         <div
           onClick={(e) => {
             setSidebarIsOpen(true);
