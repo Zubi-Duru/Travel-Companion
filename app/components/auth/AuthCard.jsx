@@ -1,15 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useAuthContext } from "@/hooks/useAuthContext";
+
+const apiUrl = "http://localhost:4000/api/auth/login";
 
 export default function AuthCard({ type }) {
   const router = useRouter();
   const pathname = usePathname();
   let tab;
   if (type == "login") {
-    tab=2
+    tab = 2;
   } else {
-    tab=1
+    tab = 1;
   }
 
   const [openTab, setOpenTab] = useState(tab);
@@ -18,8 +21,7 @@ export default function AuthCard({ type }) {
   const [passwordNew, setPasswordNew] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-
+  const { user } = useAuthContext();
   useEffect(() => {
     if (
       (openTab == 1 && username && passwordNew && email) ||
@@ -30,33 +32,55 @@ export default function AuthCard({ type }) {
       setFormFilled(false);
     }
   }, [openTab, username, email, passwordNew, password]);
-  //control forms
-  //required state to enable button
+
   const handleInputChange = (e, set) => {
     set(e.target.value);
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     if (formFilled) {
       e.preventDefaul();
       console.log(username, passwordNew, email);
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error("Error:", error));
     }
   };
-  const handleLogin = (e) => {
-    e.preventDefaul();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
     if (formFilled) {
-      console.log(email, password);
+      console.log(email, password, username);
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error("Error:", error));
     }
   };
 
   const handleAuth = (e) => {
     e.preventDefault();
     if (openTab == 1) {
-      handleSignUp;
+      handleSignUp(e);
     }
     if (openTab == 2) {
-      handleLogin;
+      handleLogin(e);
     }
+
+    console.log(user);
     router.push("/profile-setup");
   };
 

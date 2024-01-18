@@ -1,7 +1,7 @@
 import CoverSection from "@/app/components/user-profile/CoverSection";
 import AboutSection from "@/app/components/user-profile/AboutSection";
 
-import ProfileCard from "@/app/components/user-profile/profileCard";
+import ProfileCard from "@/app/components/user-profile/ProfileCard";
 import GallerySection from "@/app/components/user-profile/GallerySection";
 import UserList from "@/app/components/dashboard/UserList";
 

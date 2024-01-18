@@ -7,10 +7,26 @@ import countryDb from "@/public/countryDb";
 import { useRouter } from "next/navigation";
 
 const genderOptions = [
-  { value: "male", label: "Male" },
+  { value: "Male", label: "Male" },
   { value: "Female", label: "Female" },
   { value: "none", label: "Prefer not to say" },
 ];
+
+const relationshipOptions = [
+  { value: "Single", label: "Single" },
+  { value: "Married", label: "Married" },
+];
+
+function generateAgeOptionsArray(start, end) {
+  const optionsArray = [];
+
+  for (let x = start; x <= end; x++) {
+    optionsArray.push({ value: x, label: String(x) });
+  }
+
+  return optionsArray;
+}
+const ageOptions = generateAgeOptionsArray(13,100);
 
 const tags = [
   "Hiking",
@@ -25,6 +41,8 @@ const tags = [
   "History & Culture",
   "Adventure Seeker",
   "Photography",
+  "Nature",
+  "Science",
 ];
 
 export default function ProfileSetup() {
@@ -32,6 +50,9 @@ export default function ProfileSetup() {
   const [formFilled, setFormFilled] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedGenderOption, setSelectedGenderOption] = useState("");
+  const [selectedRelationshipOption, setSelectedRelationshipOption] =
+    useState("");
+  const [selectAgeOption, setSelectAgeOption] = useState(20);
   const [travelDate, setTravelDate] = useState("");
   const [selectedHomeCountryOption, setSelectedHomeCountryOption] =
     useState(null);
@@ -111,7 +132,8 @@ export default function ProfileSetup() {
       travelDate &&
       selectedHomeCountryOption &&
       selectedDestinationCountryOption &&
-      selectedTags.length
+      selectedTags.length &&
+      selectedRelationshipOption
     ) {
       setFormFilled(true);
 
@@ -147,6 +169,7 @@ export default function ProfileSetup() {
     selectedDestinationCountryOption,
     selectedTags,
     formFilled,
+    selectedRelationshipOption,
   ]);
 
   const handleSubmit = (e) => {
@@ -158,7 +181,8 @@ export default function ProfileSetup() {
       selectedDestinationCountryOption &&
       selectedDestinationCityOption &&
       selectedHomeCityOption &&
-      selectedTags.length
+      selectedTags.length &&
+      selectedRelationshipOption
     ) {
       console.log(
         selectedGenderOption,
@@ -169,7 +193,8 @@ export default function ProfileSetup() {
         selectedDestinationCityOption,
         selectedHomeCityOption,
         homeGeoLocation,
-        destinationGeoLocation
+        destinationGeoLocation,
+        selectedRelationshipOption
       );
     }
     router.push("/dashboard");
@@ -280,6 +305,20 @@ export default function ProfileSetup() {
             </div>
 
             <div className="w-full md:w-2/5">
+              <label htmlFor="travelDate">Travel Date</label>
+              <input
+                onChange={(e) => {
+                  handleInputChange(e, setTravelDate);
+                }}
+                className="text-prim bg-transparent placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
+                type="date"
+                id="travelDate"
+                placeholder="dd/mm/yy"
+                value={travelDate}
+              />
+            </div>
+
+            <div className="w-full md:w-2/5">
               <label htmlFor="gender">Gender</label>
               <Select
                 className="text-prim placeholder-black placeholder-opacity-25"
@@ -292,16 +331,26 @@ export default function ProfileSetup() {
             </div>
 
             <div className="w-full md:w-2/5">
-              <label htmlFor="travelDate">Travel Date</label>
-              <input
-                onChange={(e) => {
-                  handleInputChange(e, setTravelDate);
-                }}
-                className="text-prim bg-transparent placeholder-black placeholder-opacity-25 w-full h-[36px] border-[#CCC] border-[1px] rounded-[4px] px-2 focus:outline-[#2684FF]"
-                type="date"
-                id="travelDate"
-                placeholder="dd/mm/yy"
-                value={travelDate}
+              <label htmlFor="relationship">Relationship status</label>
+              <Select
+                className="text-prim placeholder-black placeholder-opacity-25"
+                defaultValue={selectedRelationshipOption}
+                onChange={setSelectedRelationshipOption}
+                options={relationshipOptions}
+                placeholder={"Single"}
+                id="relationship"
+              />
+            </div>
+
+            <div className="w-full md:w-2/5">
+              <label htmlFor="age">Age status</label>
+              <Select
+                className="text-prim placeholder-black placeholder-opacity-25"
+                defaultValue={selectAgeOption}
+                onChange={setSelectAgeOption}
+                options={ageOptions}
+                placeholder={13}
+                id="age"
               />
             </div>
 
