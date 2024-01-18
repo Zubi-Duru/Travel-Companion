@@ -4,14 +4,13 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import countryDb from "@/public/countryDb";
+import { useRouter } from "next/navigation";
 
 const genderOptions = [
   { value: "male", label: "Male" },
   { value: "Female", label: "Female" },
   { value: "none", label: "Prefer not to say" },
 ];
-
-
 
 const tags = [
   "Hiking",
@@ -29,6 +28,7 @@ const tags = [
 ];
 
 export default function ProfileSetup() {
+  const router = useRouter();
   const [formFilled, setFormFilled] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedGenderOption, setSelectedGenderOption] = useState("");
@@ -172,6 +172,7 @@ export default function ProfileSetup() {
         destinationGeoLocation
       );
     }
+    router.push("/dashboard");
   };
 
   const handleInputChange = (e, set) => {
