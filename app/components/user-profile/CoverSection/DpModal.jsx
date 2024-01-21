@@ -36,7 +36,7 @@ export default function DpModal({
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="absolute bottom-0 left-2 lg:left-8 z-10 flex h-20 md:h-28 lg:h-36 w-20 md:w-28 lg:w-36 items-center justify-center overflow-clip rounded-full bg-gradient-to-tr from-[#E94E1B] to-[#F9B233] ">
+        <div className="absolute bottom-0 left-2 lg:left-4 z-10 flex h-20 md:h-28 lg:h-36 w-20 md:w-28 lg:w-36 items-center justify-center overflow-clip rounded-full bg-gradient-to-tr from-[#E94E1B] to-[#F9B233] ">
           {/* <Image
             className="h-[136px] w-[136px] rounded-full object-cover"
             src={`${selectedImage}`}

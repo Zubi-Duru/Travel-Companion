@@ -15,7 +15,7 @@ function Bullet() {
   return <div className="w-1.5 h-12 rounded-sm bg-tert"></div>;
 }
 
-export default function SidebarMobile() {
+export default function SidebarMobile({handleLogout,address}) {
   const segment = useSelectedLayoutSegment();
   const [SidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(destinationCountry);
@@ -489,7 +489,7 @@ export default function SidebarMobile() {
             </div>
           </div>
           <div className="mt-auto mb-12 w-fit pl-7">
-            <Link href={"/dashboard"}>
+            <button onClick={(e)=>{handleLogout(e)}}>
               <div className="flex gap-2">
                 <svg
                   className="fill-[#292D32]"
@@ -514,7 +514,7 @@ export default function SidebarMobile() {
                 </svg>
                 <span>Logout</span>
               </div>
-            </Link>
+            </button >
           </div>
         </div>
       </nav>

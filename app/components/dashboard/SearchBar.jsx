@@ -34,7 +34,6 @@ let destination = {
 
 export default function SearchBar({
   dummyQuery = "Where are you going to?",
-  country = { value: "ng", label: "Nigeria" },
   searchCtrl = {
     location: defaultSelectedOption,
     setLocation: setDefaultSelectedOption,
@@ -52,7 +51,7 @@ export default function SearchBar({
     if (selectedDestinationOption && inputValue) {
       try {
         const response = await fetch(
-          `api/places?input=${inputValue}&country=${location.country.value}`
+          `api/places?input=${inputValue}&country=${location.country}`
         );
         const data = await response.json();
         console.log(data);

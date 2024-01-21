@@ -18,7 +18,6 @@ export default function HotSpotsCard({ location,setLocation }) {
       );
   
       const data = await response.json();
-      console.log(data);
       return data.data.results
     } catch (error) {
       console.error(error);
@@ -30,7 +29,6 @@ export default function HotSpotsCard({ location,setLocation }) {
     try {
       const response = await fetch(`/api/hotspots/image?photoid=${photoid}`);
       const data = await response.json();
-      console.log(data.data);
       return data.data;
     } catch (error) {
       console.error(error);
@@ -55,9 +53,6 @@ export default function HotSpotsCard({ location,setLocation }) {
             try {
               if (i < list) {
                 const durl = await getSpotImg(spot.photos[0].photo_reference);
-                {
-                  console.log(durl);
-                }
                 return (
                   <div
                     className="md:w-[48%] space-y-3 md:space-y-4 shadow-md p-2.5 rounded-xl mb-4"
@@ -119,9 +114,9 @@ export default function HotSpotsCard({ location,setLocation }) {
                             d="M16.7995 12.5303C16.7995 13.0242 16.6472 13.4918 16.3789 13.887C16.2266 14.1241 16.0307 14.3348 15.8059 14.506C15.2982 14.921 14.6309 15.1646 13.8983 15.1646C12.8394 15.1646 11.9182 14.6509 11.4177 13.887C11.1494 13.4918 10.9971 13.0242 10.9971 12.5303C10.9971 11.7005 11.4177 10.9563 12.085 10.4755C12.5855 10.1133 13.2165 9.896 13.8983 9.896C15.5012 9.896 16.7995 11.0749 16.7995 12.5303Z"
                             stroke="#292D32"
                             strokeWidth="0.987868"
-                            strokeLiterlimit="10"
+                            strokeliterlimit="10"
                             strokeLinecap="round"
-                            stroke-linejoin="round"
+                            strokeLinejoin="round"
                           />
                           <path
                             d="M12.7671 12.5302L13.4851 13.1821L15.03 11.8848"

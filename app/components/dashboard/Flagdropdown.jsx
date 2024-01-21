@@ -42,49 +42,50 @@ const customStyles = {
   indicatorsContainer: (provided, state) => ({
     ...provided,
     margin: "auto",
-    stroke:"red"
+    stroke: "red",
   }),
 };
 export default function Flagdropdown({
   size = "10",
-  getSelectedFlag = {
-    selectedOption: defaultSelectedOption,
-    setSelectedOption: setDefaultSelectedOption,
-  },
+  getSelectedFlag,
 }) {
-  const [defaultSelectedOption, setDefaultSelectedOption] =
-    useState(destination);
+
 
   const { location: selectedOption, setLocation: setSelectedOption } =
     getSelectedFlag;
+
   return (
-    <div className="flex w-full items-center">
-      <div
-        className={`w-${size} h-${size} rounded-full overflow-clip flex items-center `}
-      >
-        <Image
-          className="w-16 h-16 rounded-full scale-[1.2]"
-          src={`https://flagsapi.com/${selectedOption.country.value.toUpperCase()}/flat/64.png`}
-          width="150"
-          height="150"
-        />
-      </div>
-      <div className="">
-        <Select
-          defaultValue={selectedOption.country}
-          onChange={(e) => {
-            setSelectedOption({ ...selectedOption, country:e });
-            console.log(selectedOption);
-          }}
-          options={countryDb}
-          onBlur={(e) => {
-            console.log(selectedOption);
-          }}
-          id="homeCountry"
-          styles={customStyles}
-          placeholder={""}
-        />
-      </div>
-    </div>
+    <>
+      {selectedOption.country && (
+        <div className="flex w-full items-center">
+          <div
+            className={`w-${size} h-${size} rounded-full overflow-clip flex items-center `}
+          >
+            <Image
+              className="w-16 h-16 rounded-full scale-[1.2]"
+              src={`https://flagsapi.com/${selectedOption.country.toUpperCase()}/flat/64.png`}
+              width="150"
+              height="150"
+            />
+          </div>
+          <div className="">
+            <Select
+              defaultValue={selectedOption.country}
+              onChange={(e) => {
+                setSelectedOption({ ...selectedOption, country: e.value });
+                console.log(selectedOption);
+              }}
+              options={countryDb}
+              onBlur={(e) => {
+                console.log(selectedOption);
+              }}
+              id="homeCountry"
+              styles={customStyles}
+              placeholder={""}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

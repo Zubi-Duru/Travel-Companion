@@ -1,13 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { useAuthContext } from "@/hooks/useAuthContext";
-
-const apiUrl = "http://localhost:4000/api/auth/login";
+import { useRouter } from "next/navigation";
+import axios from "@/axiosConfig";
 
 export default function AuthCard({ type }) {
   const router = useRouter();
-  const pathname = usePathname();
   let tab;
   if (type == "login") {
     tab = 2;
@@ -21,11 +18,11 @@ export default function AuthCard({ type }) {
   const [passwordNew, setPasswordNew] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user } = useAuthContext();
+
   useEffect(() => {
     if (
-      (openTab == 1 && username && passwordNew && email) ||
-      (openTab == 2 && email && password)
+      (openTab === 1 && username && passwordNew && email) ||
+      (openTab === 2 && email && password)
     ) {
       setFormFilled(true);
     } else {
@@ -38,50 +35,70 @@ export default function AuthCard({ type }) {
   };
 
   const handleSignUp = async (e) => {
+    e.preventDefault();
     if (formFilled) {
-      e.preventDefaul();
-      console.log(username, passwordNew, email);
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
+      try {
+        const response = await axios.post(
+          "/auth/login",
+          {
+            username,
+            email,
+            password: passwordNew,
+          },
+          { withCredentials: true }
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Signup error:", error.response.data);
+      }
     }
   };
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     if (formFilled) {
-      console.log(email, password, username);
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
+      try {
+        const response = await axios.post(
+          "/auth/login",
+          {
+            email,
+            password,
+          },
+          { withCredentials: true }
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Login error:", error.response.data);
+      }
     }
   };
+  
 
-  const handleAuth = (e) => {
+  const handleAuth = async (e) => {
     e.preventDefault();
-    if (openTab == 1) {
-      handleSignUp(e);
+    console.log(router);
+    if (openTab === 1) {
+      try {
+        const user = await handleSignUp(e);
+        if (user) {
+          router.push(`/profile-setup?userId=${user.user._id}`);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
-    if (openTab == 2) {
-      handleLogin(e);
+    if (openTab === 2) {
+      console.log(router);
+      try {
+        const user = await handleLogin(e);
+        if (user) {
+          router.push(`/profile-setup?userId=${user.user._id}`);
+          return;
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
-
-    console.log(user);
-    router.push("/profile-setup");
   };
 
   return (
@@ -124,7 +141,10 @@ export default function AuthCard({ type }) {
           Sign In
         </h1>
         <div className="flex flex-col gap-3 justify-center">
-          <button className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim  flex items-center mx-auto justify-center gap-1">
+          <a
+            href={"http://localhost:4000/api/auth/login-facebook"}
+            className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim  flex items-center mx-auto justify-center gap-1"
+          >
             <svg
               width="28"
               height="28"
@@ -144,8 +164,11 @@ export default function AuthCard({ type }) {
             <p className={`${openTab == 2 ? "block" : "hidden"}`}>
               Continue with facebook
             </p>
-          </button>
-          <button className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1">
+          </a>
+          <a
+            href={"http://localhost:4000/api/auth/login-google"}
+            className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1"
+          >
             <svg
               width="28"
               height="28"
@@ -176,7 +199,7 @@ export default function AuthCard({ type }) {
             <p className={`${openTab == 2 ? "block" : "hidden"}`}>
               Continue with Google
             </p>
-          </button>
+          </a>
         </div>
         <div className="flex items-center justify-between">
           <hr className="w-2/5 inline-block border-t-[1.5px]" />

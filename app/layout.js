@@ -1,4 +1,4 @@
-import { AuthContextProvider } from "@/contexts/AppContext";
+import { AuthContextProvider } from "@/app/components/contexts/AppContext";
 import "./globals.css";
 import "dotenv/config";
 
