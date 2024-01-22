@@ -142,7 +142,7 @@ export default function AuthCard({ type }) {
         </h1>
         <div className="flex flex-col gap-3 justify-center">
           <a
-            href={`${process.env.BASEURL}/auth/login-facebook`}
+            href={`${process.env.NEXT_PUBLIC_BASEURL}/auth/login-facebook`}
             className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim  flex items-center mx-auto justify-center gap-1"
           >
             <svg
@@ -166,7 +166,7 @@ export default function AuthCard({ type }) {
             </p>
           </a>
           <a
-            href={`${process.env.BASEURL}/auth/login-google`}
+            href={`${process.env.NEXT_PUBLIC_BASEURL}/auth/login-google`}
             className="w-full py-1.5 md:py-2 border-[1px] rounded-3xl border-prim flex items-center mx-auto justify-center gap-1"
           >
             <svg
