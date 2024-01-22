@@ -4,6 +4,8 @@ import { useGetData } from "@/app/components/hooks/useFetchData";
 import { ChatEngine, getOrCreateChat } from "react-chat-engine";
 import { useAuthContext } from "@/app/components/hooks/useAuthContext";
 
+const projectID=process.env.NEXT_PUBLIC_CHAT_PROJECT_ID
+
 const DMChat = () => {
   const { user, dispatch } = useAuthContext();
   const [username, setUsername] = useState("");
@@ -41,7 +43,7 @@ const DMChat = () => {
       height="100vh"
       userName={user?.username}
       userSecret={user?._id}
-      projectID="db2b2202-e606-42d5-95c8-f794065d1185"
+      projectID={projectID}
       renderNewChatForm={(creds) => renderChatForm(creds)}
     />
   );

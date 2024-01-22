@@ -77,7 +77,7 @@ export default function Dashboard() {
     }
   }, [user]);
 
-console.log(location);
+  console.log(location);
 
   const {
     data: relatedUserData,
@@ -106,7 +106,7 @@ console.log(location);
   };
 
   const header = {
-    "PRIVATE-KEY": "b00ed4b1-0894-42a5-b0f2-d27054746f41",
+    "PRIVATE-KEY": `${process.env.NEXT_PUBLIC_CHAT_PROJECT_PASSWORD}`,
   };
 
   const fetchChatEngineUsers = async () => {
@@ -194,7 +194,10 @@ console.log(location);
                   getSelectedFlag={{ location, setLocation }}
                 />
               </div>
-              <Link href={`/user-profile/${user._id}`} className="w-14 h-14 rounded-full overflow-hidden">
+              <Link
+                href={`/user-profile/${user._id}`}
+                className="w-14 h-14 rounded-full overflow-hidden"
+              >
                 <Image
                   className="w-full h-full rounded-full"
                   src={`/assets/friend.png`}
