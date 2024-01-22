@@ -11,6 +11,7 @@ import { useGetData } from "@/app/components/hooks/useFetchData";
 import { useAuthContext } from "@/app/components/hooks/useAuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import axios from "axios";
 
 //API getUsers
 // 1. get destination country for the flag
@@ -152,7 +153,7 @@ export default function Dashboard() {
       if (!userExistsInChatEngine) {
         // Run your POST request logic here
         const res2 = await createChat();
-        console.log(res2);
+        console.log(res2,"chat");
       } else {
         console.log(
           "User already exists in ChatEngine. No need to run the POST request."

@@ -47,9 +47,9 @@ export default function AuthCard({ type }) {
           },
           { withCredentials: true }
         );
-        return response.data;
+        return response?.data;
       } catch (error) {
-        console.error("Signup error:", error.response.data);
+        console.error("Signup error:", error.response?.data);
       }
     }
   };
@@ -66,9 +66,9 @@ export default function AuthCard({ type }) {
           },
           { withCredentials: true }
         );
-        return response.data;
+        return response?.data;
       } catch (error) {
-        console.error("Login error:", error.response.data);
+        console.error("Login error:", error.response?.data);
       }
     }
   };
