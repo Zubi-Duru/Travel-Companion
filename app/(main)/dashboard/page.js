@@ -43,7 +43,7 @@ export default function Dashboard() {
     let isMounted = true; // Flag to track whether the component is mounted
 
     if (isLoading) {
-      console.log("loading");
+      console.log("loading dashboard");
     }
 
     if (!isLoading && !user?.travelDate && isMounted) {

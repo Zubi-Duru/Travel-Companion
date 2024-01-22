@@ -180,7 +180,7 @@ export default function ProfileSetup({ params, searchParams }) {
 
   useEffect(() => {
     if (isLoading) {
-      console.log("loading");
+      console.log("loading setupp");
     }
     if (!isLoading && userData) {
       dispatch({ type: "LOGIN", payload: { ...userData } });
