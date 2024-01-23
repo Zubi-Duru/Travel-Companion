@@ -95,7 +95,7 @@
   .ce-chat-engine,.ce-wrapper,.ce-chat-feed-column,
   .ce-chats-container,
   .ce-settings-column {
-    height: calc(100vh - 56px) !important;
+    min-height: calc(100vh - 56px) !important;
     overflow: hidden!important;
   }
 }
