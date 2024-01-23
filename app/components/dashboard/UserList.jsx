@@ -4,6 +4,7 @@ import BtnMain from "../general/BtnMain";
 import Image from "next/image";
 import { postData } from "@/utils/fetchData";
 import Link from "next/link";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 //API fetch related users
 
@@ -12,10 +13,10 @@ export default function UserList({
   users = [],
 }) {
   const [list, setList] = useState(4);
+  const { token } = useAuthContext();
 
   const handleConnect = async (e,i) => {
     const { data, error } = await postData(`/connect-send/${users[i]._id}`,null,token);
-    console.log(data,"ok");
   };
 
   const renderMockContent = () => {

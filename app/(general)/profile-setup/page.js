@@ -176,9 +176,12 @@ export default function ProfileSetup({ params, searchParams }) {
     isLoading,
   } = useGetData(`/user/${searchParams.userId}`);
 
+  
+
   useEffect(() => {
     console.log("ben@gmail.com");
     if (!isLoading && userData) {
+      console.log(userData);
       // Dispatch only user data without affecting the token
       dispatch({ type: "UPDATE_USER", payload: userData })
   
@@ -233,7 +236,7 @@ export default function ProfileSetup({ params, searchParams }) {
         relationship: selectedRelationshipOption.value,
       };
 
-      const { data, error } = await patchData(
+      const { data :updateData, error } = await patchData(
         `/users/${userData._id}`,
         filledUserData,token
       );
@@ -241,6 +244,7 @@ export default function ProfileSetup({ params, searchParams }) {
       if (error) {
         console.error("Error:", error);
       } else {
+        dispatch({ type: "UPDATE_USER", payload: updateData })
         router.push("/dashboard");
       }
     }

@@ -31,15 +31,15 @@ let name = "Patrick";
 export default function Dashboard() {
   const router = useRouter();
   const [location, setLocation] = useState(null);
-
   const { user,token, dispatch } = useAuthContext();
   
+  console.log(token,"hi");
 
   const {
     data: userData,
     error,
     isLoading,
-  } = useGetData(user && `/user/${user && user._id}`);
+  } = useGetData(user && `/user/${user._id}`);
 
   useEffect(() => {
     let isMounted = true; // Flag to track whether the component is mounted

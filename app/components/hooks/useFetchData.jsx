@@ -26,6 +26,10 @@ const useGetData = (apiUrl, options = {}) => {
 
           if (isMounted) {
             setData(response.data);
+            if(apiUrl.startsWith("/user")){
+              dispatch({ type: "UPDATE_USER", payload: response.data })
+            }
+
           }
         } catch (error) {
           if (isMounted) {

@@ -9,12 +9,12 @@ import { useGetData } from "../hooks/useFetchData";
 
 export default function Sidebar() {
   const router = useRouter();
-  const { user,token, dispatch } = useAuthContext();
+  const { user, token, dispatch } = useAuthContext();
 
   const handleLogout = async () => {
     try {
       // Use the deleteData hook to send a request to your logout endpoint
-      const { error } = await postData("/auth/logout",null,token);
+      const { error } = await postData("/auth/logout", null, token);
 
       if (!error) {
         // Dispatch the logout action if the request is successful
@@ -33,19 +33,22 @@ export default function Sidebar() {
 
   return (
     <div>
+      {console.log(user,"p")}
       {user && (
         <nav>
           <div className="hidden md:block relative">
             <div className="fixed h-[112vh]">
+              {console.log(user,"i")}
               <SidebarLg
                 handleLogout={handleLogout}
                 address={{
-                  to: user.destinationLocation.address,
-                  fro: user.homeLocation.address,
+                  to: user.destinationLocation?.address,
+                  fro: user.homeLocation?.address,
                 }}
               />
             </div>
           </div>
+
           <div className="md:hidden">
             <SidebarMobile
               handleLogout={handleLogout}
