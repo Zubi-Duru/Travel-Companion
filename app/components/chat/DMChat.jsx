@@ -21,39 +21,43 @@ const DMChat = () => {
   } = useGetData(`/connect-friends`, { token: token });
 
   function createDirectChat(creds) {
-    const friendList = friends.map(({ username }) => username);
-    if (friends && friends.length && friendList.includes(username)) {
-      getOrCreateChat(
-        creds,
-        { is_direct_chat: true, usernames: [username] },
-        () => setUsername("")
-      );
+    if (friends && friends.length) {
+      const friendList = friends.map(({ username }) => username);
+      if (friends && friends.length && friendList.includes(username)) {
+        getOrCreateChat(
+          creds,
+          { is_direct_chat: true, usernames: [username] },
+          () => setUsername("")
+        );
+      }
     }
   }
 
   function renderChatForm(creds) {
     return (
-      <div className="m-2 flex">
+      <div className="m-2 w-4/4 flex justify-between">
         <input
-          className="py-1 mx-1 rounded-2xl pl-2 border-2 outline-tert"
+          className="w-5/6 py-1 mx-1 rounded-2xl pl-2 border-2 outline-tert "
           placeholder="Search for a friend"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => {
+            console.log("okk", username);
+            setUsername(e.target.value);
+          }}
         />
-        <button
-          className="font-medium text-tert border-[1px] border-tert py-1 px-4 md:py-2 md:px-4 rounded-3xl hover:bg-tert hover:text-white "
-          onClick={() => createDirectChat(creds)}
-        >
-          Search
+        <button className="float-right" onClick={() => createDirectChat(creds)}>
+          🔍
         </button>
       </div>
     );
   }
 
   function renderChatFeed(chatEngineProps) {
+    const { creds } = chatEngineProps;
     return (
+      
       <div>
-        <NewChatForm />
+        {renderChatForm(creds)}
         <ChatFeed {...chatEngineProps} />
       </div>
     );

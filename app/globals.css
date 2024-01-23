@@ -89,5 +89,14 @@
   border-radius: 10px!important;
   padding: 0.5!important;
   overflow: clip!important;
-
 }
+
+@media (max-width: 576px) {
+  .ce-chat-engine,.ce-wrapper,.ce-chat-feed-column,
+  .ce-chats-container,
+  .ce-settings-column {
+    height: calc(100vh - 56px) !important;
+    overflow: hidden!important;
+  }
+}
+
