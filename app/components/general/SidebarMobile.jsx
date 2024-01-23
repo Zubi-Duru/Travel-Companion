@@ -423,7 +423,7 @@ export default function SidebarMobile({handleLogout,address}) {
               <div className="space-y-1.5">
                 <span className="w-full block text-xs">Current Location</span>
                 <span className="w-full block font-semibold text-sm">
-                  Nigeria
+                {address && address.fro}
                 </span>
               </div>
             </div>
@@ -483,7 +483,7 @@ export default function SidebarMobile({handleLogout,address}) {
               <div className="space-y-1.5">
                 <span className="w-full block text-xs">Destination</span>
                 <span className="w-full block font-semibold text-sm">
-                  South Africa
+                {address && address.to}
                 </span>
               </div>
             </div>

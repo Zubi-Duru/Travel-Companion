@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function Notification() {
   const { data: friendReqs, error, isLoading } = useGetData(`/connect`);
   const [statusArray, setStatusArray] = useState([]);
-  const {token}=useAuthContext()
+  const {token,user}=useAuthContext()
 
   console.log(friendReqs);
 

@@ -53,8 +53,8 @@ export default function Sidebar() {
             <SidebarMobile
               handleLogout={handleLogout}
               address={{
-                to: user.destinationLocation.address,
-                fro: user.homeLocation.address,
+                to: user.destinationLocation?.address,
+                fro: user.homeLocation?.address,
               }}
             />
           </div>
