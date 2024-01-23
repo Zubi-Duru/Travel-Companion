@@ -143,7 +143,7 @@ export default function ProfileSetup({ params, searchParams }) {
     const fetchData = async () => {
       try {
         if (selectedDestinationCityOption && selectedHomeCityOption) {
-          const destinationData = await getGeoLocation("Westbury, UK");
+          const destinationData = await getGeoLocation(selectedDestinationCityOption.valu);
           const homeData = await getGeoLocation(selectedHomeCityOption.value);
           if (isMounted) {
             setDestinationGeoLocation(destinationData);
