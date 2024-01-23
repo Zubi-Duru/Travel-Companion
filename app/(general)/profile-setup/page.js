@@ -49,7 +49,7 @@ const tags = [
 ];
 
 export default function ProfileSetup({ params, searchParams }) {
-  const { user, dispatch } = useAuthContext();
+  const { user,token, dispatch } = useAuthContext();
   const router = useRouter();
   const [formFilled, setFormFilled] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -122,8 +122,6 @@ export default function ProfileSetup({ params, searchParams }) {
     }
   };
 
-
-
   useEffect(() => {
     let isMounted = true;
     if (
@@ -179,11 +177,11 @@ export default function ProfileSetup({ params, searchParams }) {
   } = useGetData(`/user/${searchParams.userId}`);
 
   useEffect(() => {
-    if (isLoading) {
-      console.log("loading setupp");
-    }
+    console.log("ben@gmail.com");
     if (!isLoading && userData) {
-      dispatch({ type: "LOGIN", payload: { ...userData } });
+      // Dispatch only user data without affecting the token
+      dispatch({ type: "UPDATE_USER", payload: userData })
+  
       if (userData?.travelDate) {
         router.push("/dashboard");
       }
@@ -192,6 +190,7 @@ export default function ProfileSetup({ params, searchParams }) {
       console.error("Error fetching user data:", error);
     }
   }, [userData, error, isLoading]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -236,7 +235,7 @@ export default function ProfileSetup({ params, searchParams }) {
 
       const { data, error } = await patchData(
         `/users/${userData._id}`,
-        filledUserData
+        filledUserData,token
       );
 
       if (error) {

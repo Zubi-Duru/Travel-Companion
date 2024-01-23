@@ -1,5 +1,5 @@
 "use client";
-import { useRouter,usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { createContext, useReducer, useEffect } from "react";
 import { getData } from "@/utils/fetchData";
 import isEqual from "@/utils/isEqual";
@@ -9,11 +9,15 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      localStorage.setItem("user", JSON.stringify(action.payload));
-      return { user: action.payload };
+      const { token } = action.payload;
+      localStorage.setItem("token", token);
+      return { ...state, token };
     case "LOGOUT":
-      localStorage.removeItem("user");
-      return { user: null };
+      localStorage.removeItem("token");
+      return { user: null, token: null };
+    case "UPDATE_USER":
+      const updatedUser = action.payload;
+      return { ...state, user: updatedUser };
     default:
       return state;
   }
@@ -21,56 +25,41 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const router = useRouter();
-  const pathname=usePathname()
+  const pathname = usePathname();
 
-  // Use a callback to get the latest value from localStorage
-  const getStoredUser = () =>
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("user")) || null
-      : null;
-
+  const getStoredToken = () => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      return storedToken ? storedToken : null;
+    }
+    return null
+  };
+  
   const [state, dispatch] = useReducer(authReducer, {
-    user: getStoredUser(),
+    user: null,
+    token: getStoredToken(),
   });
 
   useEffect(() => {
-    const fetchDataAndRedirect = async () => {
-      try {
-        if (state.user) {
-          const apiUrl = `user/${state.user._id}`;
-          const { data: userData, error } = await getData(apiUrl);
+    const tokenRefetchInterval = setInterval(() => {
+      // Fetch the token from localStorage
+      const newToken = localStorage.getItem("token") || null;
   
-          if (error) {
-            console.error("Error fetching user data:", error);
-          } else {
-            // Check if userData is different from state.user before dispatching
-            if (!isEqual(userData, state.user)) {
-              // Fetched data
-              dispatch({
-                type: "LOGIN",
-                payload: { ...userData },
-              });
-            }
-          }
+      if (newToken) {
+        // If the token has changed, dispatch a login action with the user payload
+        if (newToken !== token) {
+          dispatch({ type: "LOGIN", payload: { token} });
         }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+      } else {
+        // If there's no token, dispatch a logout action
+        dispatch({ type: "LOGOUT" });
+        router.push("/auth")
       }
-    };
+    }, 600000); // Refetch every 10 minutes
   
-    const delayedRedirect = setTimeout(() => {
-      // Redirect to the login page if the user is not logged in
-      if (!state.user && (pathname !== "/" && pathname !== "/profile-setup")) {
-        router.push("/auth");
-      }
-    }, 10000); // 10 seconds delay
-  
-    // Uncomment the following line to fetch user data
-    fetchDataAndRedirect();
-  
-    // Cleanup the timeout on component unmount
-    return () => clearTimeout(delayedRedirect);
-  }, [state.user, pathname, router]);
+    // Cleanup the interval on component unmount
+    return () => clearInterval(tokenRefetchInterval);
+  }, [state.token]);
   
 
   return (

@@ -14,7 +14,7 @@ export default function UserList({
   const [list, setList] = useState(4);
 
   const handleConnect = async (e,i) => {
-    const { data, error } = await postData(`/connect-send/${users[i]._id}`);
+    const { data, error } = await postData(`/connect-send/${users[i]._id}`,null,token);
     console.log(data,"ok");
   };
 

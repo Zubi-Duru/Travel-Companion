@@ -7,9 +7,9 @@ import { useAuthContext } from "@/app/components/hooks/useAuthContext";
 const projectID=process.env.NEXT_PUBLIC_CHAT_PROJECT_ID
 
 const DMChat = () => {
-  const { user, dispatch } = useAuthContext();
+  const { user,token, dispatch } = useAuthContext();
   const [username, setUsername] = useState("");
-  const { data: friends, error, isLoading } = useGetData(`/connect-friends`);
+  const { data: friends, error, isLoading } = useGetData(`/connect-friends`,{token:token});
 
   console.log(friends);
 

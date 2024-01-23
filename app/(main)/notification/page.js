@@ -1,6 +1,7 @@
 "use client";
 import BtnMain from "@/app/components/general/BtnMain";
 import BtnSec from "@/app/components/general/BtnSec";
+import { useAuthContext } from "@/app/components/hooks/useAuthContext";
 import { useGetData } from "@/app/components/hooks/useFetchData";
 import { postData } from "@/utils/fetchData";
 import Image from "next/image";
@@ -10,11 +11,12 @@ import { useState } from "react";
 export default function Notification() {
   const { data: friendReqs, error, isLoading } = useGetData(`/connect`);
   const [statusArray, setStatusArray] = useState([]);
+  const {token}=useAuthContext()
 
   console.log(friendReqs);
 
   const handleAccept = async (e, id) => {
-    const { data, error } = await postData(`/connect-accept/${id}`);
+    const { data, error } = await postData(`/connect-accept/${id}`,null,token);
     // Update the statusArray with the accepted status for the corresponding friend request
     setStatusArray((prevStatusArray) => [
       ...prevStatusArray,
@@ -23,7 +25,7 @@ export default function Notification() {
   };
 
   const handleReject = async (e, id) => {
-    const { data, error } = await postData(`/connect-reject/${id}`);
+    const { data, error } = await postData(`/connect-reject/${id}`,null,token);
     // Update the statusArray with the rejected status for the corresponding friend request
     setStatusArray((prevStatusArray) => [
       ...prevStatusArray,

@@ -32,13 +32,14 @@ export default function Dashboard() {
   const router = useRouter();
   const [location, setLocation] = useState(null);
 
-  const { user, dispatch } = useAuthContext();
-  console.log(user);
+  const { user,token, dispatch } = useAuthContext();
+  
+
   const {
     data: userData,
     error,
     isLoading,
-  } = useGetData(`/user/${user && user._id}`);
+  } = useGetData(user && `/user/${user && user._id}`);
 
   useEffect(() => {
     let isMounted = true; // Flag to track whether the component is mounted
@@ -48,7 +49,10 @@ export default function Dashboard() {
     }
 
     if (!isLoading && !user?.travelDate && isMounted) {
-      dispatch({ type: "LOGIN", payload: { ...userData } });
+      dispatch({
+        type: "LOGIN",
+        payload: { user: userData, token: token },
+      });
     }
 
     if (error) {
@@ -89,11 +93,13 @@ export default function Dashboard() {
       `/related-users/${user._id}?lat=${
         location
           ? location.geoCode.lng
-          : user.travelDate && user.destinationLocation.coordinates[0]
+          : user.travelDate &&
+            user.destinationLocation.coordinates[0]
       }&lng=${
         location
           ? location.geoCode.lat
-          : user.travelDate && user.destinationLocation.coordinates[1]
+          : user.travelDate &&
+            user.destinationLocation.coordinates[1]
       }`
   );
 
@@ -142,27 +148,42 @@ export default function Dashboard() {
       return { error, data: null };
     }
   };
-
   useEffect(() => {
+    // Create a cancel token source for each request
+    const source1 = axios.CancelToken.source();
+    const source2 = axios.CancelToken.source();
+
     const fetchData = async () => {
-      const res1 = await fetchChatEngineUsers();
+      try {
+        const res1 = await fetchChatEngineUsers(source1.token);
 
-      // Check if user.username exists in the list
-      const userExistsInChatEngine = res1.includes(user.username);
+        // Check if user.username exists in the list
+        const userExistsInChatEngine = res1.includes(user.username);
 
-      if (!userExistsInChatEngine) {
-        // Run your POST request logic here
-        const res2 = await createChat();
-        console.log(res2,"chat");
-      } else {
-        console.log(
-          "User already exists in ChatEngine. No need to run the POST request."
-        );
+        if (!userExistsInChatEngine) {
+          // Run your POST request logic here
+          const res2 = await createChat(source2.token);
+          console.log(res2, "chat");
+        } else {
+          console.log(
+            "User already exists in ChatEngine. No need to run the POST request."
+          );
+        }
+      } catch (error) {
+        console.error('Error in fetchData:', error);
       }
     };
 
     fetchData();
+
+    // Cleanup function
+    return () => {
+      // Cancel both requests when the component is unmounted
+      source1.cancel('Request canceled: Component unmounted');
+      source2.cancel('Request canceled: Component unmounted');
+    };
   }, [user]);
+
 
   return (
     <>

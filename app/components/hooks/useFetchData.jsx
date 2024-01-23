@@ -1,46 +1,50 @@
 "use client";
-import { useState, useEffect } from 'react';
-import axios from '@/axiosConfig';
+import { useState, useEffect } from "react";
+import axios from "@/axiosConfig";
+// Assuming useAuthContext provides the authentication state including the token
+import { useAuthContext } from "./useAuthContext";
 
 const useGetData = (apiUrl, options = {}) => {
+  const {token} = useAuthContext(); // Get the token from the authentication context
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    let isMounted = true;  // Flag to track whether the component is mounted
+    let isMounted = true;
 
     const fetchData = async () => {
-      try {
-        const response = await axios.get(apiUrl, {
-          withCredentials: true,
-          ...options,
-        });
+      if (token) {
+        try {
+          const response = await axios.get(apiUrl, {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            ...options,
+          });
 
-        // Check if the component is still mounted before updating state
-        if (isMounted) {
-          setData(response.data);
-        }
-      } catch (error) {
-        // Check if the component is still mounted before updating state
-        if (isMounted) {
-          setError(error);
-        }
-      } finally {
-        // Check if the component is still mounted before updating state
-        if (isMounted) {
-          setIsLoading(false);
+          if (isMounted) {
+            setData(response.data);
+          }
+        } catch (error) {
+          if (isMounted) {
+            setError(error);
+          }
+        } finally {
+          if (isMounted) {
+            setIsLoading(false);
+          }
         }
       }
     };
 
     fetchData();
 
-    // Cleanup function to set isMounted to false when the component is unmounted
     return () => {
       isMounted = false;
     };
-  }, [apiUrl]);
+  }, [apiUrl, token]);
 
   return { data, error, isLoading };
 };

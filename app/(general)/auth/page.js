@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 
 export default function Auth({ searchParams }) {
   const router = useRouter();
-  const { user, dispatch } = useAuthContext();
+  const { user,token, dispatch } = useAuthContext();
+
 
   useEffect(()=>{
     if(user && !user.travelDate){

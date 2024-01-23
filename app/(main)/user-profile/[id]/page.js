@@ -10,14 +10,14 @@ import { useAuthContext } from "@/app/components/hooks/useAuthContext";
 import { useEffect, useState } from "react";
 
 export default function UserProfile({ params, searchParams }) {
-  const { user, dispatch } = useAuthContext();
+  const { user,token, dispatch } = useAuthContext();
   const [isProfileOwner, setIsProfileOwner] = useState(false);
-  const { data: friends, error:friendLoadingError, isLoading:friendLoading } = useGetData(`/connect-friends`);
+  const { data: friends, error:friendLoadingError, isLoading:friendLoading } = useGetData(`/connect-friends`,{token:token});
   const {
     data: userData,
     error,
     isLoading,
-  } = useGetData(`/users/${params.id}`);
+  } = useGetData(token &&`/users/${params.id}`);
 
 
 

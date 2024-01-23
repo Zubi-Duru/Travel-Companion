@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "@/axiosConfig";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function AuthCard({ type }) {
+  const { user,token, dispatch } = useAuthContext();
   const router = useRouter();
   let tab;
   if (type == "login") {
@@ -36,6 +38,7 @@ export default function AuthCard({ type }) {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+  
     if (formFilled) {
       try {
         const response = await axios.post(
@@ -47,6 +50,7 @@ export default function AuthCard({ type }) {
           },
           { withCredentials: true }
         );
+  
         return response?.data;
       } catch (error) {
         console.error("Signup error:", error.response?.data);
@@ -56,6 +60,7 @@ export default function AuthCard({ type }) {
   
   const handleLogin = async (e) => {
     e.preventDefault();
+  
     if (formFilled) {
       try {
         const response = await axios.post(
@@ -66,6 +71,7 @@ export default function AuthCard({ type }) {
           },
           { withCredentials: true }
         );
+  
         return response?.data;
       } catch (error) {
         console.error("Login error:", error.response?.data);
@@ -73,33 +79,36 @@ export default function AuthCard({ type }) {
     }
   };
   
-
   const handleAuth = async (e) => {
     e.preventDefault();
     console.log(router);
+  
+    let user;
+  
     if (openTab === 1) {
-      try {
-        const user = await handleSignUp(e);
-        if (user) {
-          router.push(`/profile-setup?userId=${user.user._id}`);
-        }
-      } catch (e) {
-        console.error(e);
-      }
+      user = await handleSignUp(e);
     }
+  
     if (openTab === 2) {
-      console.log(router);
-      try {
-        const user = await handleLogin(e);
-        if (user) {
-          router.push(`/profile-setup?userId=${user.user._id}`);
-          return;
-        }
-      } catch (e) {
-        console.error(e);
-      }
+      user = await handleLogin(e);
+    }
+  
+    if (user) {
+      // Store the token on successful login/signup
+      dispatch({
+        type: "LOGIN",
+        payload: { token:user.token },
+      })
+      // You can access user information here (e.g., user.username, user.email, etc.)
+      console.log(user);
+  
+      // Redirect to the initial route (replace '/profile-setup' with your desired route)
+      router.push(
+        `/profile-setup?userId=${user.user._id}`);
     }
   };
+  
+
 
   return (
     <div className="flex flex-col gap-6 w-full bg-white rounded-3xl p-5 text-sm">

@@ -9,12 +9,12 @@ import { useGetData } from "../hooks/useFetchData";
 
 export default function Sidebar() {
   const router = useRouter();
-  const { user, dispatch } = useAuthContext();
+  const { user,token, dispatch } = useAuthContext();
 
   const handleLogout = async () => {
     try {
       // Use the deleteData hook to send a request to your logout endpoint
-      const { error } = await postData("/auth/logout");
+      const { error } = await postData("/auth/logout",null,token);
 
       if (!error) {
         // Dispatch the logout action if the request is successful
