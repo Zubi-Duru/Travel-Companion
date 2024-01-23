@@ -75,3 +75,19 @@
   }
 }
 
+.ce-chat-title{
+  background-color: white!important;
+}
+.ce-chat-subtitle-text{
+  margin-top: 0.5rem!important;
+}
+.ce-feed-container-top{
+  height: 20px!important;
+}
+
+.ce-quill-container{
+  border-radius: 10px!important;
+  padding: 0.5!important;
+  overflow: clip!important;
+
+}
